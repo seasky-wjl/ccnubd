@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置-->
+    <classPathEntry location="E:\\DM\\mysql-connector-java-5.1.43.jar"/>
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!--插件只能放在sourceFolder的根目录中 -->
+        <plugin type="MysqlPaginationPlugin"/>
+          <!--调用自定义类，生成注释 -->
+		<commentGenerator type="org.mybatis.generator.MyCommentGenerator">
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <!-- oracle -->
+        <!--
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@172.16.254.161:1521/YCAPP"
+            userId="AGENT" password="AGENT"> </jdbcConnection>
+        -->    
+<!--        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@172.16.254.49:1521/ycmain"-->
+<!--            userId="k8pda" password="kyun@!987"> -->
+<!--            &lt;!&ndash; 读取数据库备注信息必要属性，不加注释会为null &ndash;&gt;-->
+<!--        	<property name="remarksReporting" value="true"></property>    -->
+<!--        </jdbcConnection>-->
+
+        <!-- mysql -->
+       <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.213.201:3306/junyao" userId="root"
+                        password="630630">
+        </jdbcConnection>-->
+
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost/ccnu"
+                userId="root"
+                password="630630">
+        </jdbcConnection>
+
+        <!-- sqlserver -->
+        <!-- <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            connectionURL="jdbc:sqlserver://172.28.70.45;DatabaseName=DevOP"
+            userId="DevOP"
+            password="DevOP2016">
+        </jdbcConnection> -->
+        
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL
+            和 NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.ccnu.mapper"
+                            targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <!--
+        <sqlMapGenerator targetPackage="com.ycscm.app.base.repository.mapper"
+                         targetProject=".\src">-->
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <!--
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>-->
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <!--
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.ycscm.app.base.repository" targetProject=".\src">-->
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <!--
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+		-->
+        <!-- 指定数据库表 <table schema="dishes" tableName="admin" domainObjectName="Admin"></table>
+            <table schema="dishes" tableName="claimBill" domainObjectName="ClaimBill"></table>
+            drop table if exists bas_dict; -->
+        <!-- 如若想生成example    把 enableCountByExample="false" enableSelectByExample="false"删除即可    domainObjectName="TabBillEntity" -->
+        <table tableName="doctor_tutor_information_1_1_1"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+                selectByExampleQueryId="true"
+               selectByPrimaryKeyQueryId="true" >
+            <!-- 字段驼峰命名 -->
+            <property name="useActualColumnNames" value="false"/>
+
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <!-- 重写列名 -->
+            <!-- <columnOverride column="ParamName" property="ParamName"/> -->
+        </table>
+
+        <!-- <table tableName="log_operation" enableDeleteByExample="false" enableUpdateByExample="false"
+            selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false" ></table> -->
+
+        <!-- -->
+        <!-- 有些表的字段需要指定java类型 <table schema="" tableName=""> <columnOverride column=""
+            javaType="" /> </table> -->
+    </context>
+</generatorConfiguration>

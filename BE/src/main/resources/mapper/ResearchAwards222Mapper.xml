@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.ResearchAwards222Mapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.ResearchAwards222" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="award_level" property="awardLevel" jdbcType="VARCHAR" />
+    <result column="award_name" property="awardName" jdbcType="VARCHAR" />
+    <result column="whether_first_completed_unit" property="whetherFirstCompletedUnit" jdbcType="VARCHAR" />
+    <result column="award_category" property="awardCategory" jdbcType="VARCHAR" />
+    <result column="award_grade" property="awardGrade" jdbcType="VARCHAR" />
+    <result column="award_date" property="awardDate" jdbcType="VARCHAR" />
+    <result column="awarding_unit" property="awardingUnit" jdbcType="VARCHAR" />
+    <result column="award_certificate_number" property="awardCertificateNumber" jdbcType="VARCHAR" />
+    <result column="complete_unit_ranking" property="completeUnitRanking" jdbcType="VARCHAR" />
+    <result column="sort_by_name" property="sortByName" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.ccnu.pojo.vo.ResearchAwards222Vo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="award_level" property="awardLevel" jdbcType="VARCHAR" />
+    <result column="award_name" property="awardName" jdbcType="VARCHAR" />
+    <result column="whether_first_completed_unit" property="whetherFirstCompletedUnit" jdbcType="VARCHAR" />
+    <result column="award_category" property="awardCategory" jdbcType="VARCHAR" />
+    <result column="award_grade" property="awardGrade" jdbcType="VARCHAR" />
+    <result column="award_date" property="awardDate" jdbcType="VARCHAR" />
+    <result column="awarding_unit" property="awardingUnit" jdbcType="VARCHAR" />
+    <result column="award_certificate_number" property="awardCertificateNumber" jdbcType="VARCHAR" />
+    <result column="complete_unit_ranking" property="completeUnitRanking" jdbcType="VARCHAR" />
+    <result column="sort_by_name" property="sortByName" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, award_level, award_name, whether_first_completed_unit, 
+    award_category, award_grade, award_date, awarding_unit, award_certificate_number, 
+    complete_unit_ranking, sort_by_name, last_time, isdelete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.ResearchAwards222Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from research_awards_2_2_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from research_awards_2_2_2
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from research_awards_2_2_2
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.ResearchAwards222Example" >
+    delete from research_awards_2_2_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.ResearchAwards222" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into research_awards_2_2_2 (tutor_identification_code, award_level, 
+      award_name, whether_first_completed_unit, award_category, 
+      award_grade, award_date, awarding_unit, 
+      award_certificate_number, complete_unit_ranking, 
+      sort_by_name, last_time, isdelete
+      )
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{awardLevel,jdbcType=VARCHAR}, 
+      #{awardName,jdbcType=VARCHAR}, #{whetherFirstCompletedUnit,jdbcType=VARCHAR}, #{awardCategory,jdbcType=VARCHAR}, 
+      #{awardGrade,jdbcType=VARCHAR}, #{awardDate,jdbcType=VARCHAR}, #{awardingUnit,jdbcType=VARCHAR}, 
+      #{awardCertificateNumber,jdbcType=VARCHAR}, #{completeUnitRanking,jdbcType=VARCHAR}, 
+      #{sortByName,jdbcType=VARCHAR}, #{lastTime,jdbcType=VARCHAR}, #{isdelete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.ResearchAwards222" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into research_awards_2_2_2
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="awardLevel != null" >
+        award_level,
+      </if>
+      <if test="awardName != null" >
+        award_name,
+      </if>
+      <if test="whetherFirstCompletedUnit != null" >
+        whether_first_completed_unit,
+      </if>
+      <if test="awardCategory != null" >
+        award_category,
+      </if>
+      <if test="awardGrade != null" >
+        award_grade,
+      </if>
+      <if test="awardDate != null" >
+        award_date,
+      </if>
+      <if test="awardingUnit != null" >
+        awarding_unit,
+      </if>
+      <if test="awardCertificateNumber != null" >
+        award_certificate_number,
+      </if>
+      <if test="completeUnitRanking != null" >
+        complete_unit_ranking,
+      </if>
+      <if test="sortByName != null" >
+        sort_by_name,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="awardLevel != null" >
+        #{awardLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="awardName != null" >
+        #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherFirstCompletedUnit != null" >
+        #{whetherFirstCompletedUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="awardCategory != null" >
+        #{awardCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="awardGrade != null" >
+        #{awardGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="awardDate != null" >
+        #{awardDate,jdbcType=VARCHAR},
+      </if>
+      <if test="awardingUnit != null" >
+        #{awardingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="awardCertificateNumber != null" >
+        #{awardCertificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="completeUnitRanking != null" >
+        #{completeUnitRanking,jdbcType=VARCHAR},
+      </if>
+      <if test="sortByName != null" >
+        #{sortByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.ResearchAwards222Example" resultType="java.lang.Integer" >
+    select count(*) from research_awards_2_2_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update research_awards_2_2_2
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardLevel != null" >
+        award_level = #{record.awardLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardName != null" >
+        award_name = #{record.awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.whetherFirstCompletedUnit != null" >
+        whether_first_completed_unit = #{record.whetherFirstCompletedUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardCategory != null" >
+        award_category = #{record.awardCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardGrade != null" >
+        award_grade = #{record.awardGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardDate != null" >
+        award_date = #{record.awardDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardingUnit != null" >
+        awarding_unit = #{record.awardingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardCertificateNumber != null" >
+        award_certificate_number = #{record.awardCertificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.completeUnitRanking != null" >
+        complete_unit_ranking = #{record.completeUnitRanking,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortByName != null" >
+        sort_by_name = #{record.sortByName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null" >
+        last_time = #{record.lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdelete != null" >
+        isdelete = #{record.isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update research_awards_2_2_2
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      award_level = #{record.awardLevel,jdbcType=VARCHAR},
+      award_name = #{record.awardName,jdbcType=VARCHAR},
+      whether_first_completed_unit = #{record.whetherFirstCompletedUnit,jdbcType=VARCHAR},
+      award_category = #{record.awardCategory,jdbcType=VARCHAR},
+      award_grade = #{record.awardGrade,jdbcType=VARCHAR},
+      award_date = #{record.awardDate,jdbcType=VARCHAR},
+      awarding_unit = #{record.awardingUnit,jdbcType=VARCHAR},
+      award_certificate_number = #{record.awardCertificateNumber,jdbcType=VARCHAR},
+      complete_unit_ranking = #{record.completeUnitRanking,jdbcType=VARCHAR},
+      sort_by_name = #{record.sortByName,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=VARCHAR},
+      isdelete = #{record.isdelete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.ResearchAwards222" >
+    update research_awards_2_2_2
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="awardLevel != null" >
+        award_level = #{awardLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="awardName != null" >
+        award_name = #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherFirstCompletedUnit != null" >
+        whether_first_completed_unit = #{whetherFirstCompletedUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="awardCategory != null" >
+        award_category = #{awardCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="awardGrade != null" >
+        award_grade = #{awardGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="awardDate != null" >
+        award_date = #{awardDate,jdbcType=VARCHAR},
+      </if>
+      <if test="awardingUnit != null" >
+        awarding_unit = #{awardingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="awardCertificateNumber != null" >
+        award_certificate_number = #{awardCertificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="completeUnitRanking != null" >
+        complete_unit_ranking = #{completeUnitRanking,jdbcType=VARCHAR},
+      </if>
+      <if test="sortByName != null" >
+        sort_by_name = #{sortByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.ResearchAwards222" >
+    update research_awards_2_2_2
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      award_level = #{awardLevel,jdbcType=VARCHAR},
+      award_name = #{awardName,jdbcType=VARCHAR},
+      whether_first_completed_unit = #{whetherFirstCompletedUnit,jdbcType=VARCHAR},
+      award_category = #{awardCategory,jdbcType=VARCHAR},
+      award_grade = #{awardGrade,jdbcType=VARCHAR},
+      award_date = #{awardDate,jdbcType=VARCHAR},
+      awarding_unit = #{awardingUnit,jdbcType=VARCHAR},
+      award_certificate_number = #{awardCertificateNumber,jdbcType=VARCHAR},
+      complete_unit_ranking = #{completeUnitRanking,jdbcType=VARCHAR},
+      sort_by_name = #{sortByName,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAllDoctorAwardsInfoBy222" resultMap="com.ccnu.mapper.ResearchAwards222Mapper.ResultMap"
+  parameterType="com.ccnu.pojo.dto.DoctorInfosQueryDto">
+  select distinct a.id, a.tutor_identification_code, a.award_level, a.award_name, a.whether_first_completed_unit,
+    a.award_category, a.award_grade, a.award_date, a.awarding_unit, a.award_certificate_number,
+    a.complete_unit_ranking, a.sort_by_name, a.last_time, a.isdelete,
+    b.realname as name from research_awards_2_2_2 as a
+    left JOIN user_account as b on a.tutor_identification_code = b.username
+    where a.isdelete = '0'
+    <if test="college != null and college.trim().length() > 0">
+            AND a.tutor_identification_code in (select username from user_account where faculty_code = #{college})
+    </if>
+    <if test="tutorIdentificationCode != null and tutorIdentificationCode.trim().length() > 0">
+            AND a.tutor_identification_code LIKE CONCAT(CONCAT('%',#{tutorIdentificationCode},'%'))
+    </if>
+</select>
+</mapper>
