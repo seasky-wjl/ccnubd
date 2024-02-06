@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1.扫描包 Spring扫描包-->
+    <context:component-scan base-package="com.ccnu.*"/>
+
+    <!--2.加载jdbc.properties文件 加载属性配置文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--3.配置德鲁伊数据源-->
+    <bean id="ds" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.Driver}"/>
+        <property name="url" value="${jdbc.Url}"/>
+        <property name="username" value="${jdbc.Username}"/>
+        <property name="password" value="${jdbc.Password}"/>
+    </bean>
+
+    <!-- 配置Jdbc模板  -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name = "dataSource" ref="ds" />
+    </bean>
+
+    <!--4.整合MyBatis，获取一个sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--引用数据源-->
+        <property name="dataSource" ref="ds"/>
+        <!--MyBatis配置文件的位置,Spring整合完MyBatis之后，mybatis-config.xml可以省略不需要，所有配置都在Spring中管理了-->
+        <!--<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+        <!--MyBatis的映射文件位置-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--给实体类取别名-->
+        <property name="typeAliasesPackage" value="com.ccnu.pojo"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            <!--params=value1-->
+                            <!--helperDialect=mysql //指定分页使用mysql数据库-->
+                            reasonable=true   <!--合理化分页-->
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
+    </bean>
+
+    <!--5.配置MyBatis的Mapper接口层，自动让Spring框架Mapper层的接口生成对象 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ccnu.mapper"/>
+    </bean>
+
+
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    <aop:config>
+        <aop:pointcut id="txPoint" expression="execution(* com.ccnu.service..*(..))"></aop:pointcut>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"></aop:advisor>
+    </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" rollback-for="Exception"/>
+            <tx:method name="login" no-rollback-for="Exception"/><!--默认回滚机制是RuntimeException-->
+        </tx:attributes>
+    </tx:advice>
+
+
+
+
+</beans>

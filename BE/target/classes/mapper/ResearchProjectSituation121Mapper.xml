@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.ResearchProjectSituation121Mapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.ResearchProjectSituation121" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="project_date" property="projectDate" jdbcType="VARCHAR" />
+    <result column="project_number" property="projectNumber" jdbcType="VARCHAR" />
+    <result column="project_type" property="projectType" jdbcType="VARCHAR" />
+    <result column="vertical_project_type" property="verticalProjectType" jdbcType="VARCHAR" />
+    <result column="project_status" property="projectStatus" jdbcType="VARCHAR" />
+    <result column="sort_unit_by_fill_in_form" property="sortUnitByFillInForm" jdbcType="VARCHAR" />
+    <result column="domestic_project_contract_amount" property="domesticProjectContractAmount" jdbcType="VARCHAR" />
+    <result column="abroad_project_contract_amount" property="abroadProjectContractAmount" jdbcType="VARCHAR" />
+    <result column="accumulated_items" property="accumulatedItems" jdbcType="VARCHAR" />
+    <result column="project_year_to_payment" property="projectYearToPayment" jdbcType="VARCHAR" />
+    <result column="final_acceptance_or_identification_time" property="finalAcceptanceOrIdentificationTime" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.ccnu.pojo.vo.ResearchProjectSituation121Vo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="project_date" property="projectDate" jdbcType="VARCHAR" />
+    <result column="project_number" property="projectNumber" jdbcType="VARCHAR" />
+    <result column="project_type" property="projectType" jdbcType="VARCHAR" />
+    <result column="vertical_project_type" property="verticalProjectType" jdbcType="VARCHAR" />
+    <result column="project_status" property="projectStatus" jdbcType="VARCHAR" />
+    <result column="sort_unit_by_fill_in_form" property="sortUnitByFillInForm" jdbcType="VARCHAR" />
+    <result column="domestic_project_contract_amount" property="domesticProjectContractAmount" jdbcType="VARCHAR" />
+    <result column="abroad_project_contract_amount" property="abroadProjectContractAmount" jdbcType="VARCHAR" />
+    <result column="accumulated_items" property="accumulatedItems" jdbcType="VARCHAR" />
+    <result column="project_year_to_payment" property="projectYearToPayment" jdbcType="VARCHAR" />
+    <result column="final_acceptance_or_identification_time" property="finalAcceptanceOrIdentificationTime" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, project_name, project_date, project_number, project_type, 
+    vertical_project_type, project_status, sort_unit_by_fill_in_form, domestic_project_contract_amount, 
+    abroad_project_contract_amount, accumulated_items, project_year_to_payment, final_acceptance_or_identification_time, 
+    `role`, last_time, isdelete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.ResearchProjectSituation121Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from research_project_situation_1_2_1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from research_project_situation_1_2_1
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from research_project_situation_1_2_1
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.ResearchProjectSituation121Example" >
+    delete from research_project_situation_1_2_1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.ResearchProjectSituation121" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into research_project_situation_1_2_1 (tutor_identification_code, project_name, 
+      project_date, project_number, project_type, 
+      vertical_project_type, project_status, sort_unit_by_fill_in_form, 
+      domestic_project_contract_amount, abroad_project_contract_amount, 
+      accumulated_items, project_year_to_payment, 
+      final_acceptance_or_identification_time, `role`, 
+      last_time, isdelete)
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, 
+      #{projectDate,jdbcType=VARCHAR}, #{projectNumber,jdbcType=VARCHAR}, #{projectType,jdbcType=VARCHAR}, 
+      #{verticalProjectType,jdbcType=VARCHAR}, #{projectStatus,jdbcType=VARCHAR}, #{sortUnitByFillInForm,jdbcType=VARCHAR}, 
+      #{domesticProjectContractAmount,jdbcType=VARCHAR}, #{abroadProjectContractAmount,jdbcType=VARCHAR}, 
+      #{accumulatedItems,jdbcType=VARCHAR}, #{projectYearToPayment,jdbcType=VARCHAR}, 
+      #{finalAcceptanceOrIdentificationTime,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
+      #{lastTime,jdbcType=VARCHAR}, #{isdelete,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.ResearchProjectSituation121" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into research_project_situation_1_2_1
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="projectDate != null" >
+        project_date,
+      </if>
+      <if test="projectNumber != null" >
+        project_number,
+      </if>
+      <if test="projectType != null" >
+        project_type,
+      </if>
+      <if test="verticalProjectType != null" >
+        vertical_project_type,
+      </if>
+      <if test="projectStatus != null" >
+        project_status,
+      </if>
+      <if test="sortUnitByFillInForm != null" >
+        sort_unit_by_fill_in_form,
+      </if>
+      <if test="domesticProjectContractAmount != null" >
+        domestic_project_contract_amount,
+      </if>
+      <if test="abroadProjectContractAmount != null" >
+        abroad_project_contract_amount,
+      </if>
+      <if test="accumulatedItems != null" >
+        accumulated_items,
+      </if>
+      <if test="projectYearToPayment != null" >
+        project_year_to_payment,
+      </if>
+      <if test="finalAcceptanceOrIdentificationTime != null" >
+        final_acceptance_or_identification_time,
+      </if>
+      <if test="role != null" >
+        `role`,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDate != null" >
+        #{projectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="projectNumber != null" >
+        #{projectNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null" >
+        #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="verticalProjectType != null" >
+        #{verticalProjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        #{projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sortUnitByFillInForm != null" >
+        #{sortUnitByFillInForm,jdbcType=VARCHAR},
+      </if>
+      <if test="domesticProjectContractAmount != null" >
+        #{domesticProjectContractAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="abroadProjectContractAmount != null" >
+        #{abroadProjectContractAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="accumulatedItems != null" >
+        #{accumulatedItems,jdbcType=VARCHAR},
+      </if>
+      <if test="projectYearToPayment != null" >
+        #{projectYearToPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="finalAcceptanceOrIdentificationTime != null" >
+        #{finalAcceptanceOrIdentificationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.ResearchProjectSituation121Example" resultType="java.lang.Integer" >
+    select count(*) from research_project_situation_1_2_1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update research_project_situation_1_2_1
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectName != null" >
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectDate != null" >
+        project_date = #{record.projectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectNumber != null" >
+        project_number = #{record.projectNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectType != null" >
+        project_type = #{record.projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verticalProjectType != null" >
+        vertical_project_type = #{record.verticalProjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectStatus != null" >
+        project_status = #{record.projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortUnitByFillInForm != null" >
+        sort_unit_by_fill_in_form = #{record.sortUnitByFillInForm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domesticProjectContractAmount != null" >
+        domestic_project_contract_amount = #{record.domesticProjectContractAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abroadProjectContractAmount != null" >
+        abroad_project_contract_amount = #{record.abroadProjectContractAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accumulatedItems != null" >
+        accumulated_items = #{record.accumulatedItems,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectYearToPayment != null" >
+        project_year_to_payment = #{record.projectYearToPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finalAcceptanceOrIdentificationTime != null" >
+        final_acceptance_or_identification_time = #{record.finalAcceptanceOrIdentificationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role != null" >
+        `role` = #{record.role,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null" >
+        last_time = #{record.lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdelete != null" >
+        isdelete = #{record.isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update research_project_situation_1_2_1
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      project_date = #{record.projectDate,jdbcType=VARCHAR},
+      project_number = #{record.projectNumber,jdbcType=VARCHAR},
+      project_type = #{record.projectType,jdbcType=VARCHAR},
+      vertical_project_type = #{record.verticalProjectType,jdbcType=VARCHAR},
+      project_status = #{record.projectStatus,jdbcType=VARCHAR},
+      sort_unit_by_fill_in_form = #{record.sortUnitByFillInForm,jdbcType=VARCHAR},
+      domestic_project_contract_amount = #{record.domesticProjectContractAmount,jdbcType=VARCHAR},
+      abroad_project_contract_amount = #{record.abroadProjectContractAmount,jdbcType=VARCHAR},
+      accumulated_items = #{record.accumulatedItems,jdbcType=VARCHAR},
+      project_year_to_payment = #{record.projectYearToPayment,jdbcType=VARCHAR},
+      final_acceptance_or_identification_time = #{record.finalAcceptanceOrIdentificationTime,jdbcType=VARCHAR},
+      `role` = #{record.role,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=VARCHAR},
+      isdelete = #{record.isdelete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.ResearchProjectSituation121" >
+    update research_project_situation_1_2_1
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDate != null" >
+        project_date = #{projectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="projectNumber != null" >
+        project_number = #{projectNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null" >
+        project_type = #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="verticalProjectType != null" >
+        vertical_project_type = #{verticalProjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        project_status = #{projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sortUnitByFillInForm != null" >
+        sort_unit_by_fill_in_form = #{sortUnitByFillInForm,jdbcType=VARCHAR},
+      </if>
+      <if test="domesticProjectContractAmount != null" >
+        domestic_project_contract_amount = #{domesticProjectContractAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="abroadProjectContractAmount != null" >
+        abroad_project_contract_amount = #{abroadProjectContractAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="accumulatedItems != null" >
+        accumulated_items = #{accumulatedItems,jdbcType=VARCHAR},
+      </if>
+      <if test="projectYearToPayment != null" >
+        project_year_to_payment = #{projectYearToPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="finalAcceptanceOrIdentificationTime != null" >
+        final_acceptance_or_identification_time = #{finalAcceptanceOrIdentificationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        `role` = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.ResearchProjectSituation121" >
+    update research_project_situation_1_2_1
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      project_date = #{projectDate,jdbcType=VARCHAR},
+      project_number = #{projectNumber,jdbcType=VARCHAR},
+      project_type = #{projectType,jdbcType=VARCHAR},
+      vertical_project_type = #{verticalProjectType,jdbcType=VARCHAR},
+      project_status = #{projectStatus,jdbcType=VARCHAR},
+      sort_unit_by_fill_in_form = #{sortUnitByFillInForm,jdbcType=VARCHAR},
+      domestic_project_contract_amount = #{domesticProjectContractAmount,jdbcType=VARCHAR},
+      abroad_project_contract_amount = #{abroadProjectContractAmount,jdbcType=VARCHAR},
+      accumulated_items = #{accumulatedItems,jdbcType=VARCHAR},
+      project_year_to_payment = #{projectYearToPayment,jdbcType=VARCHAR},
+      final_acceptance_or_identification_time = #{finalAcceptanceOrIdentificationTime,jdbcType=VARCHAR},
+      `role` = #{role,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAllResearchProjectInfoBy121" resultMap="com.ccnu.mapper.ResearchProjectSituation121Mapper.ResultMap"
+  parameterType="com.ccnu.pojo.dto.DoctorInfosQueryDto">
+  select distinct a.id, a.tutor_identification_code, a.project_name, a.project_date, a.project_number, a.project_type,
+    a.vertical_project_type, a.project_status, a.sort_unit_by_fill_in_form, a.domestic_project_contract_amount,
+    a.abroad_project_contract_amount, a.accumulated_items, a.project_year_to_payment, a.final_acceptance_or_identification_time,
+    a.`role`, a.last_time, a.isdelete,b.realname as name from research_project_situation_1_2_1 as a
+	left JOIN user_account as b on a.tutor_identification_code = b.username
+    where a.isdelete = '0'
+    <if test="college != null and college.trim().length() > 0">
+            AND a.tutor_identification_code in (select username from user_account where faculty_code = #{college})
+    </if>
+    <if test="tutorIdentificationCode != null and tutorIdentificationCode.trim().length() > 0">
+            AND a.tutor_identification_code LIKE CONCAT(CONCAT('%',#{tutorIdentificationCode},'%'))
+    </if>
+</select>
+</mapper>

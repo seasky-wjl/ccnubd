@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.PatentOrCopyrightAuthorizationStatus224Mapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="patent_or_book_name" property="patentOrBookName" jdbcType="VARCHAR" />
+    <result column="intellectual_property_category" property="intellectualPropertyCategory" jdbcType="VARCHAR" />
+    <result column="authorization_number" property="authorizationNumber" jdbcType="VARCHAR" />
+    <result column="approved_date" property="approvedDate" jdbcType="VARCHAR" />
+    <result column="sort_by_me" property="sortByMe" jdbcType="VARCHAR" />
+    <result column="whether_unit_is_first_application_unit" property="whetherUnitIsFirstApplicationUnit" jdbcType="VARCHAR" />
+    <result column="whether_industry_joint_patent" property="whetherIndustryJointPatent" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.ccnu.pojo.vo.PatentOrCopyrightAuthorizationStatus224Vo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="patent_or_book_name" property="patentOrBookName" jdbcType="VARCHAR" />
+    <result column="intellectual_property_category" property="intellectualPropertyCategory" jdbcType="VARCHAR" />
+    <result column="authorization_number" property="authorizationNumber" jdbcType="VARCHAR" />
+    <result column="approved_date" property="approvedDate" jdbcType="VARCHAR" />
+    <result column="sort_by_me" property="sortByMe" jdbcType="VARCHAR" />
+    <result column="whether_unit_is_first_application_unit" property="whetherUnitIsFirstApplicationUnit" jdbcType="VARCHAR" />
+    <result column="whether_industry_joint_patent" property="whetherIndustryJointPatent" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, patent_or_book_name, intellectual_property_category, 
+    authorization_number, approved_date, sort_by_me, whether_unit_is_first_application_unit, 
+    whether_industry_joint_patent, last_time, isdelete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from patent_or_copyright_authorization_status_2_2_4
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from patent_or_copyright_authorization_status_2_2_4
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from patent_or_copyright_authorization_status_2_2_4
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224Example" >
+    delete from patent_or_copyright_authorization_status_2_2_4
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into patent_or_copyright_authorization_status_2_2_4 (tutor_identification_code, patent_or_book_name, 
+      intellectual_property_category, authorization_number, 
+      approved_date, sort_by_me, whether_unit_is_first_application_unit, 
+      whether_industry_joint_patent, last_time, isdelete
+      )
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{patentOrBookName,jdbcType=VARCHAR}, 
+      #{intellectualPropertyCategory,jdbcType=VARCHAR}, #{authorizationNumber,jdbcType=VARCHAR}, 
+      #{approvedDate,jdbcType=VARCHAR}, #{sortByMe,jdbcType=VARCHAR}, #{whetherUnitIsFirstApplicationUnit,jdbcType=VARCHAR}, 
+      #{whetherIndustryJointPatent,jdbcType=VARCHAR}, #{lastTime,jdbcType=VARCHAR}, #{isdelete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into patent_or_copyright_authorization_status_2_2_4
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="patentOrBookName != null" >
+        patent_or_book_name,
+      </if>
+      <if test="intellectualPropertyCategory != null" >
+        intellectual_property_category,
+      </if>
+      <if test="authorizationNumber != null" >
+        authorization_number,
+      </if>
+      <if test="approvedDate != null" >
+        approved_date,
+      </if>
+      <if test="sortByMe != null" >
+        sort_by_me,
+      </if>
+      <if test="whetherUnitIsFirstApplicationUnit != null" >
+        whether_unit_is_first_application_unit,
+      </if>
+      <if test="whetherIndustryJointPatent != null" >
+        whether_industry_joint_patent,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="patentOrBookName != null" >
+        #{patentOrBookName,jdbcType=VARCHAR},
+      </if>
+      <if test="intellectualPropertyCategory != null" >
+        #{intellectualPropertyCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationNumber != null" >
+        #{authorizationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="approvedDate != null" >
+        #{approvedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="sortByMe != null" >
+        #{sortByMe,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherUnitIsFirstApplicationUnit != null" >
+        #{whetherUnitIsFirstApplicationUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherIndustryJointPatent != null" >
+        #{whetherIndustryJointPatent,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224Example" resultType="java.lang.Integer" >
+    select count(*) from patent_or_copyright_authorization_status_2_2_4
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update patent_or_copyright_authorization_status_2_2_4
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patentOrBookName != null" >
+        patent_or_book_name = #{record.patentOrBookName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intellectualPropertyCategory != null" >
+        intellectual_property_category = #{record.intellectualPropertyCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorizationNumber != null" >
+        authorization_number = #{record.authorizationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approvedDate != null" >
+        approved_date = #{record.approvedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortByMe != null" >
+        sort_by_me = #{record.sortByMe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.whetherUnitIsFirstApplicationUnit != null" >
+        whether_unit_is_first_application_unit = #{record.whetherUnitIsFirstApplicationUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.whetherIndustryJointPatent != null" >
+        whether_industry_joint_patent = #{record.whetherIndustryJointPatent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null" >
+        last_time = #{record.lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdelete != null" >
+        isdelete = #{record.isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update patent_or_copyright_authorization_status_2_2_4
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      patent_or_book_name = #{record.patentOrBookName,jdbcType=VARCHAR},
+      intellectual_property_category = #{record.intellectualPropertyCategory,jdbcType=VARCHAR},
+      authorization_number = #{record.authorizationNumber,jdbcType=VARCHAR},
+      approved_date = #{record.approvedDate,jdbcType=VARCHAR},
+      sort_by_me = #{record.sortByMe,jdbcType=VARCHAR},
+      whether_unit_is_first_application_unit = #{record.whetherUnitIsFirstApplicationUnit,jdbcType=VARCHAR},
+      whether_industry_joint_patent = #{record.whetherIndustryJointPatent,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=VARCHAR},
+      isdelete = #{record.isdelete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224" >
+    update patent_or_copyright_authorization_status_2_2_4
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="patentOrBookName != null" >
+        patent_or_book_name = #{patentOrBookName,jdbcType=VARCHAR},
+      </if>
+      <if test="intellectualPropertyCategory != null" >
+        intellectual_property_category = #{intellectualPropertyCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationNumber != null" >
+        authorization_number = #{authorizationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="approvedDate != null" >
+        approved_date = #{approvedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="sortByMe != null" >
+        sort_by_me = #{sortByMe,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherUnitIsFirstApplicationUnit != null" >
+        whether_unit_is_first_application_unit = #{whetherUnitIsFirstApplicationUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherIndustryJointPatent != null" >
+        whether_industry_joint_patent = #{whetherIndustryJointPatent,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.PatentOrCopyrightAuthorizationStatus224" >
+    update patent_or_copyright_authorization_status_2_2_4
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      patent_or_book_name = #{patentOrBookName,jdbcType=VARCHAR},
+      intellectual_property_category = #{intellectualPropertyCategory,jdbcType=VARCHAR},
+      authorization_number = #{authorizationNumber,jdbcType=VARCHAR},
+      approved_date = #{approvedDate,jdbcType=VARCHAR},
+      sort_by_me = #{sortByMe,jdbcType=VARCHAR},
+      whether_unit_is_first_application_unit = #{whetherUnitIsFirstApplicationUnit,jdbcType=VARCHAR},
+      whether_industry_joint_patent = #{whetherIndustryJointPatent,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAllDoctorPatentInfoBy224" resultMap="com.ccnu.mapper.PatentOrCopyrightAuthorizationStatus224Mapper.ResultMap"
+  parameterType="com.ccnu.pojo.dto.DoctorInfosQueryDto">
+  select distinct a.id, a.tutor_identification_code, a.patent_or_book_name, a.intellectual_property_category,
+    a.authorization_number, a.approved_date, a.sort_by_me, a.whether_unit_is_first_application_unit,
+    a.whether_industry_joint_patent, a.last_time, a.isdelete,
+    b.realname as name from patent_or_copyright_authorization_status_2_2_4 as a
+    left JOIN user_account as b on a.tutor_identification_code = b.username
+    where a.isdelete = '0'
+    <if test="college != null and college.trim().length() > 0">
+            AND a.tutor_identification_code in (select username from user_account where faculty_code = #{college})
+    </if>
+    <if test="tutorIdentificationCode != null and tutorIdentificationCode.trim().length() > 0">
+            AND a.tutor_identification_code LIKE CONCAT(CONCAT('%',#{tutorIdentificationCode},'%'))
+    </if>
+</select>
+</mapper>

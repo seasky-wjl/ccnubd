@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.DoctorTutorInformation111Xu1Mapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.DoctorTutorInformation111Xu1" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="participation_date" property="participationDate" jdbcType="VARCHAR" />
+    <result column="first_date_of_admission_to_doctoral_students" property="firstDateOfAdmissionToDoctoralStudents" jdbcType="VARCHAR" />
+    <result column="in_the_staff" property="inTheStaff" jdbcType="VARCHAR" />
+    <result column="sign_contract_with_institution" property="signContractWithInstitution" jdbcType="VARCHAR" />
+    <result column="employment_period" property="employmentPeriod" jdbcType="VARCHAR" />
+    <result column="full_time_job_in_unit" property="fullTimeJobInUnit" jdbcType="VARCHAR" />
+    <result column="full_time_job_unit" property="fullTimeJobUnit" jdbcType="VARCHAR" />
+    <result column="is_retire" property="isRetire" jdbcType="VARCHAR" />
+    <result column="professional_and_technical_positions" property="professionalAndTechnicalPositions" jdbcType="VARCHAR" />
+    <result column="post_rating" property="postRating" jdbcType="VARCHAR" />
+    <result column="party_and_government_duties" property="partyAndGovernmentDuties" jdbcType="VARCHAR" />
+    <result column="overseas_training_experience" property="overseasTrainingExperience" jdbcType="VARCHAR" />
+    <result column="name_of_selected_talent_project_and_year_of_selection" property="nameOfSelectedTalentProjectAndYearOfSelection" jdbcType="VARCHAR" />
+    <result column="have_other_industry_technical_titles" property="haveOtherIndustryTechnicalTitles" jdbcType="VARCHAR" />
+    <result column="have_academic_part_time_at_home_and_abroad" property="haveAcademicPartTimeAtHomeAndAbroad" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.ccnu.pojo.vo.DoctorTutorInformation111Xu1Vo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="participation_date" property="participationDate" jdbcType="VARCHAR" />
+    <result column="first_date_of_admission_to_doctoral_students" property="firstDateOfAdmissionToDoctoralStudents" jdbcType="VARCHAR" />
+    <result column="in_the_staff" property="inTheStaff" jdbcType="VARCHAR" />
+    <result column="sign_contract_with_institution" property="signContractWithInstitution" jdbcType="VARCHAR" />
+    <result column="employment_period" property="employmentPeriod" jdbcType="VARCHAR" />
+    <result column="full_time_job_in_unit" property="fullTimeJobInUnit" jdbcType="VARCHAR" />
+    <result column="full_time_job_unit" property="fullTimeJobUnit" jdbcType="VARCHAR" />
+    <result column="is_retire" property="isRetire" jdbcType="VARCHAR" />
+    <result column="professional_and_technical_positions" property="professionalAndTechnicalPositions" jdbcType="VARCHAR" />
+    <result column="post_rating" property="postRating" jdbcType="VARCHAR" />
+    <result column="party_and_government_duties" property="partyAndGovernmentDuties" jdbcType="VARCHAR" />
+    <result column="overseas_training_experience" property="overseasTrainingExperience" jdbcType="VARCHAR" />
+    <result column="name_of_selected_talent_project_and_year_of_selection" property="nameOfSelectedTalentProjectAndYearOfSelection" jdbcType="VARCHAR" />
+    <result column="have_other_industry_technical_titles" property="haveOtherIndustryTechnicalTitles" jdbcType="VARCHAR" />
+    <result column="have_academic_part_time_at_home_and_abroad" property="haveAcademicPartTimeAtHomeAndAbroad" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, participation_date, first_date_of_admission_to_doctoral_students, 
+    in_the_staff, sign_contract_with_institution, employment_period, full_time_job_in_unit, 
+    full_time_job_unit, is_retire, professional_and_technical_positions, post_rating, 
+    party_and_government_duties, overseas_training_experience, name_of_selected_talent_project_and_year_of_selection, 
+    have_other_industry_technical_titles, have_academic_part_time_at_home_and_abroad, 
+    last_time, isdelete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.DoctorTutorInformation111Xu1Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from doctor_tutor_information_1_1_1_xu1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from doctor_tutor_information_1_1_1_xu1
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from doctor_tutor_information_1_1_1_xu1
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.DoctorTutorInformation111Xu1Example" >
+    delete from doctor_tutor_information_1_1_1_xu1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.DoctorTutorInformation111Xu1" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into doctor_tutor_information_1_1_1_xu1 (tutor_identification_code, participation_date, 
+      first_date_of_admission_to_doctoral_students, in_the_staff, 
+      sign_contract_with_institution, employment_period, 
+      full_time_job_in_unit, full_time_job_unit, is_retire, 
+      professional_and_technical_positions, post_rating, 
+      party_and_government_duties, overseas_training_experience, 
+      name_of_selected_talent_project_and_year_of_selection, have_other_industry_technical_titles, 
+      have_academic_part_time_at_home_and_abroad, last_time, 
+      isdelete)
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{participationDate,jdbcType=VARCHAR}, 
+      #{firstDateOfAdmissionToDoctoralStudents,jdbcType=VARCHAR}, #{inTheStaff,jdbcType=VARCHAR}, 
+      #{signContractWithInstitution,jdbcType=VARCHAR}, #{employmentPeriod,jdbcType=VARCHAR}, 
+      #{fullTimeJobInUnit,jdbcType=VARCHAR}, #{fullTimeJobUnit,jdbcType=VARCHAR}, #{isRetire,jdbcType=VARCHAR}, 
+      #{professionalAndTechnicalPositions,jdbcType=VARCHAR}, #{postRating,jdbcType=VARCHAR}, 
+      #{partyAndGovernmentDuties,jdbcType=VARCHAR}, #{overseasTrainingExperience,jdbcType=VARCHAR}, 
+      #{nameOfSelectedTalentProjectAndYearOfSelection,jdbcType=VARCHAR}, #{haveOtherIndustryTechnicalTitles,jdbcType=VARCHAR}, 
+      #{haveAcademicPartTimeAtHomeAndAbroad,jdbcType=VARCHAR}, #{lastTime,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.DoctorTutorInformation111Xu1" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into doctor_tutor_information_1_1_1_xu1
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="participationDate != null" >
+        participation_date,
+      </if>
+      <if test="firstDateOfAdmissionToDoctoralStudents != null" >
+        first_date_of_admission_to_doctoral_students,
+      </if>
+      <if test="inTheStaff != null" >
+        in_the_staff,
+      </if>
+      <if test="signContractWithInstitution != null" >
+        sign_contract_with_institution,
+      </if>
+      <if test="employmentPeriod != null" >
+        employment_period,
+      </if>
+      <if test="fullTimeJobInUnit != null" >
+        full_time_job_in_unit,
+      </if>
+      <if test="fullTimeJobUnit != null" >
+        full_time_job_unit,
+      </if>
+      <if test="isRetire != null" >
+        is_retire,
+      </if>
+      <if test="professionalAndTechnicalPositions != null" >
+        professional_and_technical_positions,
+      </if>
+      <if test="postRating != null" >
+        post_rating,
+      </if>
+      <if test="partyAndGovernmentDuties != null" >
+        party_and_government_duties,
+      </if>
+      <if test="overseasTrainingExperience != null" >
+        overseas_training_experience,
+      </if>
+      <if test="nameOfSelectedTalentProjectAndYearOfSelection != null" >
+        name_of_selected_talent_project_and_year_of_selection,
+      </if>
+      <if test="haveOtherIndustryTechnicalTitles != null" >
+        have_other_industry_technical_titles,
+      </if>
+      <if test="haveAcademicPartTimeAtHomeAndAbroad != null" >
+        have_academic_part_time_at_home_and_abroad,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="participationDate != null" >
+        #{participationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDateOfAdmissionToDoctoralStudents != null" >
+        #{firstDateOfAdmissionToDoctoralStudents,jdbcType=VARCHAR},
+      </if>
+      <if test="inTheStaff != null" >
+        #{inTheStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="signContractWithInstitution != null" >
+        #{signContractWithInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentPeriod != null" >
+        #{employmentPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="fullTimeJobInUnit != null" >
+        #{fullTimeJobInUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="fullTimeJobUnit != null" >
+        #{fullTimeJobUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="isRetire != null" >
+        #{isRetire,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalAndTechnicalPositions != null" >
+        #{professionalAndTechnicalPositions,jdbcType=VARCHAR},
+      </if>
+      <if test="postRating != null" >
+        #{postRating,jdbcType=VARCHAR},
+      </if>
+      <if test="partyAndGovernmentDuties != null" >
+        #{partyAndGovernmentDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasTrainingExperience != null" >
+        #{overseasTrainingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="nameOfSelectedTalentProjectAndYearOfSelection != null" >
+        #{nameOfSelectedTalentProjectAndYearOfSelection,jdbcType=VARCHAR},
+      </if>
+      <if test="haveOtherIndustryTechnicalTitles != null" >
+        #{haveOtherIndustryTechnicalTitles,jdbcType=VARCHAR},
+      </if>
+      <if test="haveAcademicPartTimeAtHomeAndAbroad != null" >
+        #{haveAcademicPartTimeAtHomeAndAbroad,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.DoctorTutorInformation111Xu1Example" resultType="java.lang.Integer" >
+    select count(*) from doctor_tutor_information_1_1_1_xu1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update doctor_tutor_information_1_1_1_xu1
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.participationDate != null" >
+        participation_date = #{record.participationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstDateOfAdmissionToDoctoralStudents != null" >
+        first_date_of_admission_to_doctoral_students = #{record.firstDateOfAdmissionToDoctoralStudents,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inTheStaff != null" >
+        in_the_staff = #{record.inTheStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signContractWithInstitution != null" >
+        sign_contract_with_institution = #{record.signContractWithInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="record.employmentPeriod != null" >
+        employment_period = #{record.employmentPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fullTimeJobInUnit != null" >
+        full_time_job_in_unit = #{record.fullTimeJobInUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fullTimeJobUnit != null" >
+        full_time_job_unit = #{record.fullTimeJobUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isRetire != null" >
+        is_retire = #{record.isRetire,jdbcType=VARCHAR},
+      </if>
+      <if test="record.professionalAndTechnicalPositions != null" >
+        professional_and_technical_positions = #{record.professionalAndTechnicalPositions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postRating != null" >
+        post_rating = #{record.postRating,jdbcType=VARCHAR},
+      </if>
+      <if test="record.partyAndGovernmentDuties != null" >
+        party_and_government_duties = #{record.partyAndGovernmentDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overseasTrainingExperience != null" >
+        overseas_training_experience = #{record.overseasTrainingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameOfSelectedTalentProjectAndYearOfSelection != null" >
+        name_of_selected_talent_project_and_year_of_selection = #{record.nameOfSelectedTalentProjectAndYearOfSelection,jdbcType=VARCHAR},
+      </if>
+      <if test="record.haveOtherIndustryTechnicalTitles != null" >
+        have_other_industry_technical_titles = #{record.haveOtherIndustryTechnicalTitles,jdbcType=VARCHAR},
+      </if>
+      <if test="record.haveAcademicPartTimeAtHomeAndAbroad != null" >
+        have_academic_part_time_at_home_and_abroad = #{record.haveAcademicPartTimeAtHomeAndAbroad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null" >
+        last_time = #{record.lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdelete != null" >
+        isdelete = #{record.isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update doctor_tutor_information_1_1_1_xu1
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      participation_date = #{record.participationDate,jdbcType=VARCHAR},
+      first_date_of_admission_to_doctoral_students = #{record.firstDateOfAdmissionToDoctoralStudents,jdbcType=VARCHAR},
+      in_the_staff = #{record.inTheStaff,jdbcType=VARCHAR},
+      sign_contract_with_institution = #{record.signContractWithInstitution,jdbcType=VARCHAR},
+      employment_period = #{record.employmentPeriod,jdbcType=VARCHAR},
+      full_time_job_in_unit = #{record.fullTimeJobInUnit,jdbcType=VARCHAR},
+      full_time_job_unit = #{record.fullTimeJobUnit,jdbcType=VARCHAR},
+      is_retire = #{record.isRetire,jdbcType=VARCHAR},
+      professional_and_technical_positions = #{record.professionalAndTechnicalPositions,jdbcType=VARCHAR},
+      post_rating = #{record.postRating,jdbcType=VARCHAR},
+      party_and_government_duties = #{record.partyAndGovernmentDuties,jdbcType=VARCHAR},
+      overseas_training_experience = #{record.overseasTrainingExperience,jdbcType=VARCHAR},
+      name_of_selected_talent_project_and_year_of_selection = #{record.nameOfSelectedTalentProjectAndYearOfSelection,jdbcType=VARCHAR},
+      have_other_industry_technical_titles = #{record.haveOtherIndustryTechnicalTitles,jdbcType=VARCHAR},
+      have_academic_part_time_at_home_and_abroad = #{record.haveAcademicPartTimeAtHomeAndAbroad,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=VARCHAR},
+      isdelete = #{record.isdelete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.DoctorTutorInformation111Xu1" >
+    update doctor_tutor_information_1_1_1_xu1
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="participationDate != null" >
+        participation_date = #{participationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDateOfAdmissionToDoctoralStudents != null" >
+        first_date_of_admission_to_doctoral_students = #{firstDateOfAdmissionToDoctoralStudents,jdbcType=VARCHAR},
+      </if>
+      <if test="inTheStaff != null" >
+        in_the_staff = #{inTheStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="signContractWithInstitution != null" >
+        sign_contract_with_institution = #{signContractWithInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentPeriod != null" >
+        employment_period = #{employmentPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="fullTimeJobInUnit != null" >
+        full_time_job_in_unit = #{fullTimeJobInUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="fullTimeJobUnit != null" >
+        full_time_job_unit = #{fullTimeJobUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="isRetire != null" >
+        is_retire = #{isRetire,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalAndTechnicalPositions != null" >
+        professional_and_technical_positions = #{professionalAndTechnicalPositions,jdbcType=VARCHAR},
+      </if>
+      <if test="postRating != null" >
+        post_rating = #{postRating,jdbcType=VARCHAR},
+      </if>
+      <if test="partyAndGovernmentDuties != null" >
+        party_and_government_duties = #{partyAndGovernmentDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="overseasTrainingExperience != null" >
+        overseas_training_experience = #{overseasTrainingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="nameOfSelectedTalentProjectAndYearOfSelection != null" >
+        name_of_selected_talent_project_and_year_of_selection = #{nameOfSelectedTalentProjectAndYearOfSelection,jdbcType=VARCHAR},
+      </if>
+      <if test="haveOtherIndustryTechnicalTitles != null" >
+        have_other_industry_technical_titles = #{haveOtherIndustryTechnicalTitles,jdbcType=VARCHAR},
+      </if>
+      <if test="haveAcademicPartTimeAtHomeAndAbroad != null" >
+        have_academic_part_time_at_home_and_abroad = #{haveAcademicPartTimeAtHomeAndAbroad,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.DoctorTutorInformation111Xu1" >
+    update doctor_tutor_information_1_1_1_xu1
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      participation_date = #{participationDate,jdbcType=VARCHAR},
+      first_date_of_admission_to_doctoral_students = #{firstDateOfAdmissionToDoctoralStudents,jdbcType=VARCHAR},
+      in_the_staff = #{inTheStaff,jdbcType=VARCHAR},
+      sign_contract_with_institution = #{signContractWithInstitution,jdbcType=VARCHAR},
+      employment_period = #{employmentPeriod,jdbcType=VARCHAR},
+      full_time_job_in_unit = #{fullTimeJobInUnit,jdbcType=VARCHAR},
+      full_time_job_unit = #{fullTimeJobUnit,jdbcType=VARCHAR},
+      is_retire = #{isRetire,jdbcType=VARCHAR},
+      professional_and_technical_positions = #{professionalAndTechnicalPositions,jdbcType=VARCHAR},
+      post_rating = #{postRating,jdbcType=VARCHAR},
+      party_and_government_duties = #{partyAndGovernmentDuties,jdbcType=VARCHAR},
+      overseas_training_experience = #{overseasTrainingExperience,jdbcType=VARCHAR},
+      name_of_selected_talent_project_and_year_of_selection = #{nameOfSelectedTalentProjectAndYearOfSelection,jdbcType=VARCHAR},
+      have_other_industry_technical_titles = #{haveOtherIndustryTechnicalTitles,jdbcType=VARCHAR},
+      have_academic_part_time_at_home_and_abroad = #{haveAcademicPartTimeAtHomeAndAbroad,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getAllDoctorsInfoBy111xu1" resultMap="com.ccnu.mapper.DoctorTutorInformation111Xu1Mapper.ResultMap"
+  parameterType="com.ccnu.pojo.dto.DoctorInfosQueryDto">
+    select distinct a.id, a.tutor_identification_code, a.participation_date, a.first_date_of_admission_to_doctoral_students,
+    a.in_the_staff, a.sign_contract_with_institution, a.employment_period, a.full_time_job_in_unit,
+    a.full_time_job_unit, a.is_retire, a.professional_and_technical_positions, a.post_rating,
+    a.party_and_government_duties, a.overseas_training_experience, a.name_of_selected_talent_project_and_year_of_selection,
+    a.have_other_industry_technical_titles, a.have_academic_part_time_at_home_and_abroad,
+    a.last_time, a.isdelete,b.realname as name from doctor_tutor_information_1_1_1_xu1 as a
+	left JOIN user_account as b on a.tutor_identification_code = b.username
+    where a.isdelete = '0'
+    <if test="college != null and college.trim().length() > 0">
+            AND a.tutor_identification_code in (select username from user_account where faculty_code = #{college})
+    </if>
+    <if test="tutorIdentificationCode != null and tutorIdentificationCode.trim().length() > 0">
+            AND a.tutor_identification_code LIKE CONCAT(CONCAT('%',#{tutorIdentificationCode},'%'))
+    </if>
+</select>
+</mapper>

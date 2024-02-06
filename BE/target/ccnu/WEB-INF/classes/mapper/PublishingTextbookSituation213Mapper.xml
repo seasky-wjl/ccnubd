@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.PublishingTextbookSituation213Mapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.PublishingTextbookSituation213" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="textbook_name" property="textbookName" jdbcType="VARCHAR" />
+    <result column="situation_with_selected_textbooks" property="situationWithSelectedTextbooks" jdbcType="VARCHAR" />
+    <result column="publishing_house" property="publishingHouse" jdbcType="VARCHAR" />
+    <result column="publisher_country" property="publisherCountry" jdbcType="VARCHAR" />
+    <result column="total_number_of_words" property="totalNumberOfWords" jdbcType="VARCHAR" />
+    <result column="number_of_issues" property="numberOfIssues" jdbcType="VARCHAR" />
+    <result column="publication_date" property="publicationDate" jdbcType="VARCHAR" />
+    <result column="book_number" property="bookNumber" jdbcType="VARCHAR" />
+    <result column="publishing_language" property="publishingLanguage" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.ccnu.pojo.vo.PublishingTextbookSituation213Vo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="textbook_name" property="textbookName" jdbcType="VARCHAR" />
+    <result column="situation_with_selected_textbooks" property="situationWithSelectedTextbooks" jdbcType="VARCHAR" />
+    <result column="publishing_house" property="publishingHouse" jdbcType="VARCHAR" />
+    <result column="publisher_country" property="publisherCountry" jdbcType="VARCHAR" />
+    <result column="total_number_of_words" property="totalNumberOfWords" jdbcType="VARCHAR" />
+    <result column="number_of_issues" property="numberOfIssues" jdbcType="VARCHAR" />
+    <result column="publication_date" property="publicationDate" jdbcType="VARCHAR" />
+    <result column="book_number" property="bookNumber" jdbcType="VARCHAR" />
+    <result column="publishing_language" property="publishingLanguage" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, textbook_name, situation_with_selected_textbooks, 
+    publishing_house, publisher_country, total_number_of_words, number_of_issues, publication_date, 
+    book_number, publishing_language, `role`, last_time, isdelete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.PublishingTextbookSituation213Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from publishing_textbook_situation_2_1_3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from publishing_textbook_situation_2_1_3
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from publishing_textbook_situation_2_1_3
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.PublishingTextbookSituation213Example" >
+    delete from publishing_textbook_situation_2_1_3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.PublishingTextbookSituation213" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into publishing_textbook_situation_2_1_3 (tutor_identification_code, textbook_name, 
+      situation_with_selected_textbooks, publishing_house, 
+      publisher_country, total_number_of_words, number_of_issues, 
+      publication_date, book_number, publishing_language, 
+      `role`, last_time, isdelete
+      )
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{textbookName,jdbcType=VARCHAR}, 
+      #{situationWithSelectedTextbooks,jdbcType=VARCHAR}, #{publishingHouse,jdbcType=VARCHAR}, 
+      #{publisherCountry,jdbcType=VARCHAR}, #{totalNumberOfWords,jdbcType=VARCHAR}, #{numberOfIssues,jdbcType=VARCHAR}, 
+      #{publicationDate,jdbcType=VARCHAR}, #{bookNumber,jdbcType=VARCHAR}, #{publishingLanguage,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR}, #{lastTime,jdbcType=VARCHAR}, #{isdelete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.PublishingTextbookSituation213" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into publishing_textbook_situation_2_1_3
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="textbookName != null" >
+        textbook_name,
+      </if>
+      <if test="situationWithSelectedTextbooks != null" >
+        situation_with_selected_textbooks,
+      </if>
+      <if test="publishingHouse != null" >
+        publishing_house,
+      </if>
+      <if test="publisherCountry != null" >
+        publisher_country,
+      </if>
+      <if test="totalNumberOfWords != null" >
+        total_number_of_words,
+      </if>
+      <if test="numberOfIssues != null" >
+        number_of_issues,
+      </if>
+      <if test="publicationDate != null" >
+        publication_date,
+      </if>
+      <if test="bookNumber != null" >
+        book_number,
+      </if>
+      <if test="publishingLanguage != null" >
+        publishing_language,
+      </if>
+      <if test="role != null" >
+        `role`,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="textbookName != null" >
+        #{textbookName,jdbcType=VARCHAR},
+      </if>
+      <if test="situationWithSelectedTextbooks != null" >
+        #{situationWithSelectedTextbooks,jdbcType=VARCHAR},
+      </if>
+      <if test="publishingHouse != null" >
+        #{publishingHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherCountry != null" >
+        #{publisherCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNumberOfWords != null" >
+        #{totalNumberOfWords,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfIssues != null" >
+        #{numberOfIssues,jdbcType=VARCHAR},
+      </if>
+      <if test="publicationDate != null" >
+        #{publicationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bookNumber != null" >
+        #{bookNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="publishingLanguage != null" >
+        #{publishingLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.PublishingTextbookSituation213Example" resultType="java.lang.Integer" >
+    select count(*) from publishing_textbook_situation_2_1_3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update publishing_textbook_situation_2_1_3
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.textbookName != null" >
+        textbook_name = #{record.textbookName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.situationWithSelectedTextbooks != null" >
+        situation_with_selected_textbooks = #{record.situationWithSelectedTextbooks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishingHouse != null" >
+        publishing_house = #{record.publishingHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publisherCountry != null" >
+        publisher_country = #{record.publisherCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalNumberOfWords != null" >
+        total_number_of_words = #{record.totalNumberOfWords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numberOfIssues != null" >
+        number_of_issues = #{record.numberOfIssues,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publicationDate != null" >
+        publication_date = #{record.publicationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookNumber != null" >
+        book_number = #{record.bookNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishingLanguage != null" >
+        publishing_language = #{record.publishingLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role != null" >
+        `role` = #{record.role,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null" >
+        last_time = #{record.lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdelete != null" >
+        isdelete = #{record.isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update publishing_textbook_situation_2_1_3
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      textbook_name = #{record.textbookName,jdbcType=VARCHAR},
+      situation_with_selected_textbooks = #{record.situationWithSelectedTextbooks,jdbcType=VARCHAR},
+      publishing_house = #{record.publishingHouse,jdbcType=VARCHAR},
+      publisher_country = #{record.publisherCountry,jdbcType=VARCHAR},
+      total_number_of_words = #{record.totalNumberOfWords,jdbcType=VARCHAR},
+      number_of_issues = #{record.numberOfIssues,jdbcType=VARCHAR},
+      publication_date = #{record.publicationDate,jdbcType=VARCHAR},
+      book_number = #{record.bookNumber,jdbcType=VARCHAR},
+      publishing_language = #{record.publishingLanguage,jdbcType=VARCHAR},
+      `role` = #{record.role,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=VARCHAR},
+      isdelete = #{record.isdelete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.PublishingTextbookSituation213" >
+    update publishing_textbook_situation_2_1_3
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="textbookName != null" >
+        textbook_name = #{textbookName,jdbcType=VARCHAR},
+      </if>
+      <if test="situationWithSelectedTextbooks != null" >
+        situation_with_selected_textbooks = #{situationWithSelectedTextbooks,jdbcType=VARCHAR},
+      </if>
+      <if test="publishingHouse != null" >
+        publishing_house = #{publishingHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherCountry != null" >
+        publisher_country = #{publisherCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNumberOfWords != null" >
+        total_number_of_words = #{totalNumberOfWords,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfIssues != null" >
+        number_of_issues = #{numberOfIssues,jdbcType=VARCHAR},
+      </if>
+      <if test="publicationDate != null" >
+        publication_date = #{publicationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bookNumber != null" >
+        book_number = #{bookNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="publishingLanguage != null" >
+        publishing_language = #{publishingLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        `role` = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.PublishingTextbookSituation213" >
+    update publishing_textbook_situation_2_1_3
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      textbook_name = #{textbookName,jdbcType=VARCHAR},
+      situation_with_selected_textbooks = #{situationWithSelectedTextbooks,jdbcType=VARCHAR},
+      publishing_house = #{publishingHouse,jdbcType=VARCHAR},
+      publisher_country = #{publisherCountry,jdbcType=VARCHAR},
+      total_number_of_words = #{totalNumberOfWords,jdbcType=VARCHAR},
+      number_of_issues = #{numberOfIssues,jdbcType=VARCHAR},
+      publication_date = #{publicationDate,jdbcType=VARCHAR},
+      book_number = #{bookNumber,jdbcType=VARCHAR},
+      publishing_language = #{publishingLanguage,jdbcType=VARCHAR},
+      `role` = #{role,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAllDoctorPublishingInfoBy213" resultMap="com.ccnu.mapper.PublishingTextbookSituation213Mapper.ResultMap"
+  parameterType="com.ccnu.pojo.dto.DoctorInfosQueryDto">
+  select distinct a.id, a.tutor_identification_code, a.textbook_name, a.situation_with_selected_textbooks,
+    a.publishing_house, a.publisher_country, a.total_number_of_words, a.number_of_issues, a.publication_date,
+    a.book_number, a.publishing_language, a.`role`, a.last_time, a.isdelete,
+    b.realname as name from publishing_textbook_situation_2_1_3 as a
+    left JOIN user_account as b on a.tutor_identification_code = b.username
+    where a.isdelete = '0'
+    <if test="college != null and college.trim().length() > 0">
+            AND a.tutor_identification_code in (select username from user_account where faculty_code = #{college})
+    </if>
+    <if test="tutorIdentificationCode != null and tutorIdentificationCode.trim().length() > 0">
+            AND a.tutor_identification_code LIKE CONCAT(CONCAT('%',#{tutorIdentificationCode},'%'))
+    </if>
+</select>
+</mapper>

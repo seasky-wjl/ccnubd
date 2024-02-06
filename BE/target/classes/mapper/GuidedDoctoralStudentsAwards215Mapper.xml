@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.GuidedDoctoralStudentsAwards215Mapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.GuidedDoctoralStudentsAwards215" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="award_topic" property="awardTopic" jdbcType="VARCHAR" />
+    <result column="award_name" property="awardName" jdbcType="VARCHAR" />
+    <result column="certificate_number" property="certificateNumber" jdbcType="VARCHAR" />
+    <result column="award_level" property="awardLevel" jdbcType="VARCHAR" />
+    <result column="award_grade" property="awardGrade" jdbcType="VARCHAR" />
+    <result column="awarding_unit" property="awardingUnit" jdbcType="VARCHAR" />
+    <result column="award_doctoral_student_identification_code" property="awardDoctoralStudentIdentificationCode" jdbcType="VARCHAR" />
+    <result column="instructor_order" property="instructorOrder" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.ccnu.pojo.vo.GuidedDoctoralStudentsAwards215Vo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="award_topic" property="awardTopic" jdbcType="VARCHAR" />
+    <result column="award_name" property="awardName" jdbcType="VARCHAR" />
+    <result column="certificate_number" property="certificateNumber" jdbcType="VARCHAR" />
+    <result column="award_level" property="awardLevel" jdbcType="VARCHAR" />
+    <result column="award_grade" property="awardGrade" jdbcType="VARCHAR" />
+    <result column="awarding_unit" property="awardingUnit" jdbcType="VARCHAR" />
+    <result column="award_doctoral_student_identification_code" property="awardDoctoralStudentIdentificationCode" jdbcType="VARCHAR" />
+    <result column="instructor_order" property="instructorOrder" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, award_topic, award_name, certificate_number, award_level, 
+    award_grade, awarding_unit, award_doctoral_student_identification_code, instructor_order, 
+    last_time, isdelete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.GuidedDoctoralStudentsAwards215Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from guided_doctoral_students_awards_2_1_5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from guided_doctoral_students_awards_2_1_5
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from guided_doctoral_students_awards_2_1_5
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.GuidedDoctoralStudentsAwards215Example" >
+    delete from guided_doctoral_students_awards_2_1_5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.GuidedDoctoralStudentsAwards215" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into guided_doctoral_students_awards_2_1_5 (tutor_identification_code, award_topic, 
+      award_name, certificate_number, award_level, 
+      award_grade, awarding_unit, award_doctoral_student_identification_code, 
+      instructor_order, last_time, isdelete
+      )
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{awardTopic,jdbcType=VARCHAR}, 
+      #{awardName,jdbcType=VARCHAR}, #{certificateNumber,jdbcType=VARCHAR}, #{awardLevel,jdbcType=VARCHAR}, 
+      #{awardGrade,jdbcType=VARCHAR}, #{awardingUnit,jdbcType=VARCHAR}, #{awardDoctoralStudentIdentificationCode,jdbcType=VARCHAR}, 
+      #{instructorOrder,jdbcType=VARCHAR}, #{lastTime,jdbcType=VARCHAR}, #{isdelete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.GuidedDoctoralStudentsAwards215" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into guided_doctoral_students_awards_2_1_5
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="awardTopic != null" >
+        award_topic,
+      </if>
+      <if test="awardName != null" >
+        award_name,
+      </if>
+      <if test="certificateNumber != null" >
+        certificate_number,
+      </if>
+      <if test="awardLevel != null" >
+        award_level,
+      </if>
+      <if test="awardGrade != null" >
+        award_grade,
+      </if>
+      <if test="awardingUnit != null" >
+        awarding_unit,
+      </if>
+      <if test="awardDoctoralStudentIdentificationCode != null" >
+        award_doctoral_student_identification_code,
+      </if>
+      <if test="instructorOrder != null" >
+        instructor_order,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="awardTopic != null" >
+        #{awardTopic,jdbcType=VARCHAR},
+      </if>
+      <if test="awardName != null" >
+        #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null" >
+        #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="awardLevel != null" >
+        #{awardLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="awardGrade != null" >
+        #{awardGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="awardingUnit != null" >
+        #{awardingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="awardDoctoralStudentIdentificationCode != null" >
+        #{awardDoctoralStudentIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorOrder != null" >
+        #{instructorOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.GuidedDoctoralStudentsAwards215Example" resultType="java.lang.Integer" >
+    select count(*) from guided_doctoral_students_awards_2_1_5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update guided_doctoral_students_awards_2_1_5
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardTopic != null" >
+        award_topic = #{record.awardTopic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardName != null" >
+        award_name = #{record.awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificateNumber != null" >
+        certificate_number = #{record.certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardLevel != null" >
+        award_level = #{record.awardLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardGrade != null" >
+        award_grade = #{record.awardGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardingUnit != null" >
+        awarding_unit = #{record.awardingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardDoctoralStudentIdentificationCode != null" >
+        award_doctoral_student_identification_code = #{record.awardDoctoralStudentIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.instructorOrder != null" >
+        instructor_order = #{record.instructorOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null" >
+        last_time = #{record.lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdelete != null" >
+        isdelete = #{record.isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update guided_doctoral_students_awards_2_1_5
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      award_topic = #{record.awardTopic,jdbcType=VARCHAR},
+      award_name = #{record.awardName,jdbcType=VARCHAR},
+      certificate_number = #{record.certificateNumber,jdbcType=VARCHAR},
+      award_level = #{record.awardLevel,jdbcType=VARCHAR},
+      award_grade = #{record.awardGrade,jdbcType=VARCHAR},
+      awarding_unit = #{record.awardingUnit,jdbcType=VARCHAR},
+      award_doctoral_student_identification_code = #{record.awardDoctoralStudentIdentificationCode,jdbcType=VARCHAR},
+      instructor_order = #{record.instructorOrder,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=VARCHAR},
+      isdelete = #{record.isdelete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.GuidedDoctoralStudentsAwards215" >
+    update guided_doctoral_students_awards_2_1_5
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="awardTopic != null" >
+        award_topic = #{awardTopic,jdbcType=VARCHAR},
+      </if>
+      <if test="awardName != null" >
+        award_name = #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null" >
+        certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="awardLevel != null" >
+        award_level = #{awardLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="awardGrade != null" >
+        award_grade = #{awardGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="awardingUnit != null" >
+        awarding_unit = #{awardingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="awardDoctoralStudentIdentificationCode != null" >
+        award_doctoral_student_identification_code = #{awardDoctoralStudentIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorOrder != null" >
+        instructor_order = #{instructorOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.GuidedDoctoralStudentsAwards215" >
+    update guided_doctoral_students_awards_2_1_5
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      award_topic = #{awardTopic,jdbcType=VARCHAR},
+      award_name = #{awardName,jdbcType=VARCHAR},
+      certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      award_level = #{awardLevel,jdbcType=VARCHAR},
+      award_grade = #{awardGrade,jdbcType=VARCHAR},
+      awarding_unit = #{awardingUnit,jdbcType=VARCHAR},
+      award_doctoral_student_identification_code = #{awardDoctoralStudentIdentificationCode,jdbcType=VARCHAR},
+      instructor_order = #{instructorOrder,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAllDoctorGuidedInfoBy215" resultMap="com.ccnu.mapper.GuidedDoctoralStudentsAwards215Mapper.ResultMap"
+  parameterType="com.ccnu.pojo.dto.DoctorInfosQueryDto">
+  select distinct a.id, a.tutor_identification_code, a.award_topic, a.award_name, a.certificate_number, a.award_level,
+    a.award_grade, a.awarding_unit, a.award_doctoral_student_identification_code, a.instructor_order,
+    a.last_time, a.isdelete,
+    b.realname as name from guided_doctoral_students_awards_2_1_5 as a
+    left JOIN user_account as b on a.tutor_identification_code = b.username
+    where a.isdelete = '0'
+    <if test="college != null and college.trim().length() > 0">
+            AND a.tutor_identification_code in (select username from user_account where faculty_code = #{college})
+    </if>
+    <if test="tutorIdentificationCode != null and tutorIdentificationCode.trim().length() > 0">
+            AND a.tutor_identification_code LIKE CONCAT(CONCAT('%',#{tutorIdentificationCode},'%'))
+    </if>
+</select>
+</mapper>

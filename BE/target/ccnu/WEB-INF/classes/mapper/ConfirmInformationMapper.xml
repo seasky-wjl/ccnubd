@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.ConfirmInformationMapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.ConfirmInformation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="table_ confirm111" property="tableConfirm111" jdbcType="VARCHAR" />
+    <result column="table_ confirm111xu1" property="tableConfirm111xu1" jdbcType="VARCHAR" />
+    <result column="table_ confirm111xu2" property="tableConfirm111xu2" jdbcType="VARCHAR" />
+    <result column="table_ confirm112" property="tableConfirm112" jdbcType="VARCHAR" />
+    <result column="table_ confirm121" property="tableConfirm121" jdbcType="VARCHAR" />
+    <result column="table_ confirm211" property="tableConfirm211" jdbcType="VARCHAR" />
+    <result column="table_ confirm212" property="tableConfirm212" jdbcType="VARCHAR" />
+    <result column="table_ confirm213" property="tableConfirm213" jdbcType="VARCHAR" />
+    <result column="table_ confirm214" property="tableConfirm214" jdbcType="VARCHAR" />
+    <result column="table_ confirm215" property="tableConfirm215" jdbcType="VARCHAR" />
+    <result column="table_ confirm221" property="tableConfirm221" jdbcType="VARCHAR" />
+    <result column="table_ confirm222" property="tableConfirm222" jdbcType="VARCHAR" />
+    <result column="table_ confirm223" property="tableConfirm223" jdbcType="VARCHAR" />
+    <result column="table_ confirm224" property="tableConfirm224" jdbcType="VARCHAR" />
+    <result column="table_ confirm225" property="tableConfirm225" jdbcType="VARCHAR" />
+    <result column="table_ confirm226" property="tableConfirm226" jdbcType="VARCHAR" />
+    <result column="table_ confirm227" property="tableConfirm227" jdbcType="VARCHAR" />
+    <result column="total_ confirm" property="totalConfirm" jdbcType="VARCHAR" />
+    <result column="table_time111" property="tableTime111" jdbcType="VARCHAR" />
+    <result column="table_time111xu1" property="tableTime111xu1" jdbcType="VARCHAR" />
+    <result column="table_time111xu2" property="tableTime111xu2" jdbcType="VARCHAR" />
+    <result column="table_time112" property="tableTime112" jdbcType="VARCHAR" />
+    <result column="table_time121" property="tableTime121" jdbcType="VARCHAR" />
+    <result column="table_time211" property="tableTime211" jdbcType="VARCHAR" />
+    <result column="table_time212" property="tableTime212" jdbcType="VARCHAR" />
+    <result column="table_time213" property="tableTime213" jdbcType="VARCHAR" />
+    <result column="table_time214" property="tableTime214" jdbcType="VARCHAR" />
+    <result column="table_time215" property="tableTime215" jdbcType="VARCHAR" />
+    <result column="table_time221" property="tableTime221" jdbcType="VARCHAR" />
+    <result column="table_time222" property="tableTime222" jdbcType="VARCHAR" />
+    <result column="table_time223" property="tableTime223" jdbcType="VARCHAR" />
+    <result column="table_time224" property="tableTime224" jdbcType="VARCHAR" />
+    <result column="table_time225" property="tableTime225" jdbcType="VARCHAR" />
+    <result column="table_time226" property="tableTime226" jdbcType="VARCHAR" />
+    <result column="table_time227" property="tableTime227" jdbcType="VARCHAR" />
+    <result column="total_time" property="totalTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, `table_ confirm111`, `table_ confirm111xu1`, `table_ confirm111xu2`, 
+    `table_ confirm112`, `table_ confirm121`, `table_ confirm211`, `table_ confirm212`, 
+    `table_ confirm213`, `table_ confirm214`, `table_ confirm215`, `table_ confirm221`, 
+    `table_ confirm222`, `table_ confirm223`, `table_ confirm224`, `table_ confirm225`, 
+    `table_ confirm226`, `table_ confirm227`, `total_ confirm`, table_time111, table_time111xu1, 
+    table_time111xu2, table_time112, table_time121, table_time211, table_time212, table_time213, 
+    table_time214, table_time215, table_time221, table_time222, table_time223, table_time224, 
+    table_time225, table_time226, table_time227, total_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.ConfirmInformationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from confirm_information
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from confirm_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from confirm_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.ConfirmInformationExample" >
+    delete from confirm_information
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.ConfirmInformation" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into confirm_information (tutor_identification_code, `table_ confirm111`, 
+      `table_ confirm111xu1`, `table_ confirm111xu2`, 
+      `table_ confirm112`, `table_ confirm121`, `table_ confirm211`, 
+      `table_ confirm212`, `table_ confirm213`, `table_ confirm214`, 
+      `table_ confirm215`, `table_ confirm221`, `table_ confirm222`, 
+      `table_ confirm223`, `table_ confirm224`, `table_ confirm225`, 
+      `table_ confirm226`, `table_ confirm227`, `total_ confirm`, 
+      table_time111, table_time111xu1, table_time111xu2, 
+      table_time112, table_time121, table_time211, 
+      table_time212, table_time213, table_time214, 
+      table_time215, table_time221, table_time222, 
+      table_time223, table_time224, table_time225, 
+      table_time226, table_time227, total_time
+      )
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{tableConfirm111,jdbcType=VARCHAR}, 
+      #{tableConfirm111xu1,jdbcType=VARCHAR}, #{tableConfirm111xu2,jdbcType=VARCHAR}, 
+      #{tableConfirm112,jdbcType=VARCHAR}, #{tableConfirm121,jdbcType=VARCHAR}, #{tableConfirm211,jdbcType=VARCHAR}, 
+      #{tableConfirm212,jdbcType=VARCHAR}, #{tableConfirm213,jdbcType=VARCHAR}, #{tableConfirm214,jdbcType=VARCHAR}, 
+      #{tableConfirm215,jdbcType=VARCHAR}, #{tableConfirm221,jdbcType=VARCHAR}, #{tableConfirm222,jdbcType=VARCHAR}, 
+      #{tableConfirm223,jdbcType=VARCHAR}, #{tableConfirm224,jdbcType=VARCHAR}, #{tableConfirm225,jdbcType=VARCHAR}, 
+      #{tableConfirm226,jdbcType=VARCHAR}, #{tableConfirm227,jdbcType=VARCHAR}, #{totalConfirm,jdbcType=VARCHAR}, 
+      #{tableTime111,jdbcType=VARCHAR}, #{tableTime111xu1,jdbcType=VARCHAR}, #{tableTime111xu2,jdbcType=VARCHAR}, 
+      #{tableTime112,jdbcType=VARCHAR}, #{tableTime121,jdbcType=VARCHAR}, #{tableTime211,jdbcType=VARCHAR}, 
+      #{tableTime212,jdbcType=VARCHAR}, #{tableTime213,jdbcType=VARCHAR}, #{tableTime214,jdbcType=VARCHAR}, 
+      #{tableTime215,jdbcType=VARCHAR}, #{tableTime221,jdbcType=VARCHAR}, #{tableTime222,jdbcType=VARCHAR}, 
+      #{tableTime223,jdbcType=VARCHAR}, #{tableTime224,jdbcType=VARCHAR}, #{tableTime225,jdbcType=VARCHAR}, 
+      #{tableTime226,jdbcType=VARCHAR}, #{tableTime227,jdbcType=VARCHAR}, #{totalTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.ConfirmInformation" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into confirm_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="tableConfirm111 != null" >
+        `table_ confirm111`,
+      </if>
+      <if test="tableConfirm111xu1 != null" >
+        `table_ confirm111xu1`,
+      </if>
+      <if test="tableConfirm111xu2 != null" >
+        `table_ confirm111xu2`,
+      </if>
+      <if test="tableConfirm112 != null" >
+        `table_ confirm112`,
+      </if>
+      <if test="tableConfirm121 != null" >
+        `table_ confirm121`,
+      </if>
+      <if test="tableConfirm211 != null" >
+        `table_ confirm211`,
+      </if>
+      <if test="tableConfirm212 != null" >
+        `table_ confirm212`,
+      </if>
+      <if test="tableConfirm213 != null" >
+        `table_ confirm213`,
+      </if>
+      <if test="tableConfirm214 != null" >
+        `table_ confirm214`,
+      </if>
+      <if test="tableConfirm215 != null" >
+        `table_ confirm215`,
+      </if>
+      <if test="tableConfirm221 != null" >
+        `table_ confirm221`,
+      </if>
+      <if test="tableConfirm222 != null" >
+        `table_ confirm222`,
+      </if>
+      <if test="tableConfirm223 != null" >
+        `table_ confirm223`,
+      </if>
+      <if test="tableConfirm224 != null" >
+        `table_ confirm224`,
+      </if>
+      <if test="tableConfirm225 != null" >
+        `table_ confirm225`,
+      </if>
+      <if test="tableConfirm226 != null" >
+        `table_ confirm226`,
+      </if>
+      <if test="tableConfirm227 != null" >
+        `table_ confirm227`,
+      </if>
+      <if test="totalConfirm != null" >
+        `total_ confirm`,
+      </if>
+      <if test="tableTime111 != null" >
+        table_time111,
+      </if>
+      <if test="tableTime111xu1 != null" >
+        table_time111xu1,
+      </if>
+      <if test="tableTime111xu2 != null" >
+        table_time111xu2,
+      </if>
+      <if test="tableTime112 != null" >
+        table_time112,
+      </if>
+      <if test="tableTime121 != null" >
+        table_time121,
+      </if>
+      <if test="tableTime211 != null" >
+        table_time211,
+      </if>
+      <if test="tableTime212 != null" >
+        table_time212,
+      </if>
+      <if test="tableTime213 != null" >
+        table_time213,
+      </if>
+      <if test="tableTime214 != null" >
+        table_time214,
+      </if>
+      <if test="tableTime215 != null" >
+        table_time215,
+      </if>
+      <if test="tableTime221 != null" >
+        table_time221,
+      </if>
+      <if test="tableTime222 != null" >
+        table_time222,
+      </if>
+      <if test="tableTime223 != null" >
+        table_time223,
+      </if>
+      <if test="tableTime224 != null" >
+        table_time224,
+      </if>
+      <if test="tableTime225 != null" >
+        table_time225,
+      </if>
+      <if test="tableTime226 != null" >
+        table_time226,
+      </if>
+      <if test="tableTime227 != null" >
+        table_time227,
+      </if>
+      <if test="totalTime != null" >
+        total_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm111 != null" >
+        #{tableConfirm111,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm111xu1 != null" >
+        #{tableConfirm111xu1,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm111xu2 != null" >
+        #{tableConfirm111xu2,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm112 != null" >
+        #{tableConfirm112,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm121 != null" >
+        #{tableConfirm121,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm211 != null" >
+        #{tableConfirm211,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm212 != null" >
+        #{tableConfirm212,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm213 != null" >
+        #{tableConfirm213,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm214 != null" >
+        #{tableConfirm214,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm215 != null" >
+        #{tableConfirm215,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm221 != null" >
+        #{tableConfirm221,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm222 != null" >
+        #{tableConfirm222,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm223 != null" >
+        #{tableConfirm223,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm224 != null" >
+        #{tableConfirm224,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm225 != null" >
+        #{tableConfirm225,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm226 != null" >
+        #{tableConfirm226,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm227 != null" >
+        #{tableConfirm227,jdbcType=VARCHAR},
+      </if>
+      <if test="totalConfirm != null" >
+        #{totalConfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime111 != null" >
+        #{tableTime111,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime111xu1 != null" >
+        #{tableTime111xu1,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime111xu2 != null" >
+        #{tableTime111xu2,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime112 != null" >
+        #{tableTime112,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime121 != null" >
+        #{tableTime121,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime211 != null" >
+        #{tableTime211,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime212 != null" >
+        #{tableTime212,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime213 != null" >
+        #{tableTime213,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime214 != null" >
+        #{tableTime214,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime215 != null" >
+        #{tableTime215,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime221 != null" >
+        #{tableTime221,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime222 != null" >
+        #{tableTime222,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime223 != null" >
+        #{tableTime223,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime224 != null" >
+        #{tableTime224,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime225 != null" >
+        #{tableTime225,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime226 != null" >
+        #{tableTime226,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime227 != null" >
+        #{tableTime227,jdbcType=VARCHAR},
+      </if>
+      <if test="totalTime != null" >
+        #{totalTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.ConfirmInformationExample" resultType="java.lang.Integer" >
+    select count(*) from confirm_information
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update confirm_information
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm111 != null" >
+        `table_ confirm111` = #{record.tableConfirm111,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm111xu1 != null" >
+        `table_ confirm111xu1` = #{record.tableConfirm111xu1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm111xu2 != null" >
+        `table_ confirm111xu2` = #{record.tableConfirm111xu2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm112 != null" >
+        `table_ confirm112` = #{record.tableConfirm112,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm121 != null" >
+        `table_ confirm121` = #{record.tableConfirm121,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm211 != null" >
+        `table_ confirm211` = #{record.tableConfirm211,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm212 != null" >
+        `table_ confirm212` = #{record.tableConfirm212,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm213 != null" >
+        `table_ confirm213` = #{record.tableConfirm213,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm214 != null" >
+        `table_ confirm214` = #{record.tableConfirm214,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm215 != null" >
+        `table_ confirm215` = #{record.tableConfirm215,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm221 != null" >
+        `table_ confirm221` = #{record.tableConfirm221,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm222 != null" >
+        `table_ confirm222` = #{record.tableConfirm222,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm223 != null" >
+        `table_ confirm223` = #{record.tableConfirm223,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm224 != null" >
+        `table_ confirm224` = #{record.tableConfirm224,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm225 != null" >
+        `table_ confirm225` = #{record.tableConfirm225,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm226 != null" >
+        `table_ confirm226` = #{record.tableConfirm226,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableConfirm227 != null" >
+        `table_ confirm227` = #{record.tableConfirm227,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalConfirm != null" >
+        `total_ confirm` = #{record.totalConfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime111 != null" >
+        table_time111 = #{record.tableTime111,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime111xu1 != null" >
+        table_time111xu1 = #{record.tableTime111xu1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime111xu2 != null" >
+        table_time111xu2 = #{record.tableTime111xu2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime112 != null" >
+        table_time112 = #{record.tableTime112,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime121 != null" >
+        table_time121 = #{record.tableTime121,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime211 != null" >
+        table_time211 = #{record.tableTime211,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime212 != null" >
+        table_time212 = #{record.tableTime212,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime213 != null" >
+        table_time213 = #{record.tableTime213,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime214 != null" >
+        table_time214 = #{record.tableTime214,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime215 != null" >
+        table_time215 = #{record.tableTime215,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime221 != null" >
+        table_time221 = #{record.tableTime221,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime222 != null" >
+        table_time222 = #{record.tableTime222,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime223 != null" >
+        table_time223 = #{record.tableTime223,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime224 != null" >
+        table_time224 = #{record.tableTime224,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime225 != null" >
+        table_time225 = #{record.tableTime225,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime226 != null" >
+        table_time226 = #{record.tableTime226,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableTime227 != null" >
+        table_time227 = #{record.tableTime227,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalTime != null" >
+        total_time = #{record.totalTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update confirm_information
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      `table_ confirm111` = #{record.tableConfirm111,jdbcType=VARCHAR},
+      `table_ confirm111xu1` = #{record.tableConfirm111xu1,jdbcType=VARCHAR},
+      `table_ confirm111xu2` = #{record.tableConfirm111xu2,jdbcType=VARCHAR},
+      `table_ confirm112` = #{record.tableConfirm112,jdbcType=VARCHAR},
+      `table_ confirm121` = #{record.tableConfirm121,jdbcType=VARCHAR},
+      `table_ confirm211` = #{record.tableConfirm211,jdbcType=VARCHAR},
+      `table_ confirm212` = #{record.tableConfirm212,jdbcType=VARCHAR},
+      `table_ confirm213` = #{record.tableConfirm213,jdbcType=VARCHAR},
+      `table_ confirm214` = #{record.tableConfirm214,jdbcType=VARCHAR},
+      `table_ confirm215` = #{record.tableConfirm215,jdbcType=VARCHAR},
+      `table_ confirm221` = #{record.tableConfirm221,jdbcType=VARCHAR},
+      `table_ confirm222` = #{record.tableConfirm222,jdbcType=VARCHAR},
+      `table_ confirm223` = #{record.tableConfirm223,jdbcType=VARCHAR},
+      `table_ confirm224` = #{record.tableConfirm224,jdbcType=VARCHAR},
+      `table_ confirm225` = #{record.tableConfirm225,jdbcType=VARCHAR},
+      `table_ confirm226` = #{record.tableConfirm226,jdbcType=VARCHAR},
+      `table_ confirm227` = #{record.tableConfirm227,jdbcType=VARCHAR},
+      `total_ confirm` = #{record.totalConfirm,jdbcType=VARCHAR},
+      table_time111 = #{record.tableTime111,jdbcType=VARCHAR},
+      table_time111xu1 = #{record.tableTime111xu1,jdbcType=VARCHAR},
+      table_time111xu2 = #{record.tableTime111xu2,jdbcType=VARCHAR},
+      table_time112 = #{record.tableTime112,jdbcType=VARCHAR},
+      table_time121 = #{record.tableTime121,jdbcType=VARCHAR},
+      table_time211 = #{record.tableTime211,jdbcType=VARCHAR},
+      table_time212 = #{record.tableTime212,jdbcType=VARCHAR},
+      table_time213 = #{record.tableTime213,jdbcType=VARCHAR},
+      table_time214 = #{record.tableTime214,jdbcType=VARCHAR},
+      table_time215 = #{record.tableTime215,jdbcType=VARCHAR},
+      table_time221 = #{record.tableTime221,jdbcType=VARCHAR},
+      table_time222 = #{record.tableTime222,jdbcType=VARCHAR},
+      table_time223 = #{record.tableTime223,jdbcType=VARCHAR},
+      table_time224 = #{record.tableTime224,jdbcType=VARCHAR},
+      table_time225 = #{record.tableTime225,jdbcType=VARCHAR},
+      table_time226 = #{record.tableTime226,jdbcType=VARCHAR},
+      table_time227 = #{record.tableTime227,jdbcType=VARCHAR},
+      total_time = #{record.totalTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.ConfirmInformation" >
+    update confirm_information
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm111 != null" >
+        `table_ confirm111` = #{tableConfirm111,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm111xu1 != null" >
+        `table_ confirm111xu1` = #{tableConfirm111xu1,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm111xu2 != null" >
+        `table_ confirm111xu2` = #{tableConfirm111xu2,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm112 != null" >
+        `table_ confirm112` = #{tableConfirm112,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm121 != null" >
+        `table_ confirm121` = #{tableConfirm121,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm211 != null" >
+        `table_ confirm211` = #{tableConfirm211,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm212 != null" >
+        `table_ confirm212` = #{tableConfirm212,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm213 != null" >
+        `table_ confirm213` = #{tableConfirm213,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm214 != null" >
+        `table_ confirm214` = #{tableConfirm214,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm215 != null" >
+        `table_ confirm215` = #{tableConfirm215,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm221 != null" >
+        `table_ confirm221` = #{tableConfirm221,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm222 != null" >
+        `table_ confirm222` = #{tableConfirm222,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm223 != null" >
+        `table_ confirm223` = #{tableConfirm223,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm224 != null" >
+        `table_ confirm224` = #{tableConfirm224,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm225 != null" >
+        `table_ confirm225` = #{tableConfirm225,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm226 != null" >
+        `table_ confirm226` = #{tableConfirm226,jdbcType=VARCHAR},
+      </if>
+      <if test="tableConfirm227 != null" >
+        `table_ confirm227` = #{tableConfirm227,jdbcType=VARCHAR},
+      </if>
+      <if test="totalConfirm != null" >
+        `total_ confirm` = #{totalConfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime111 != null" >
+        table_time111 = #{tableTime111,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime111xu1 != null" >
+        table_time111xu1 = #{tableTime111xu1,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime111xu2 != null" >
+        table_time111xu2 = #{tableTime111xu2,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime112 != null" >
+        table_time112 = #{tableTime112,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime121 != null" >
+        table_time121 = #{tableTime121,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime211 != null" >
+        table_time211 = #{tableTime211,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime212 != null" >
+        table_time212 = #{tableTime212,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime213 != null" >
+        table_time213 = #{tableTime213,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime214 != null" >
+        table_time214 = #{tableTime214,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime215 != null" >
+        table_time215 = #{tableTime215,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime221 != null" >
+        table_time221 = #{tableTime221,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime222 != null" >
+        table_time222 = #{tableTime222,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime223 != null" >
+        table_time223 = #{tableTime223,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime224 != null" >
+        table_time224 = #{tableTime224,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime225 != null" >
+        table_time225 = #{tableTime225,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime226 != null" >
+        table_time226 = #{tableTime226,jdbcType=VARCHAR},
+      </if>
+      <if test="tableTime227 != null" >
+        table_time227 = #{tableTime227,jdbcType=VARCHAR},
+      </if>
+      <if test="totalTime != null" >
+        total_time = #{totalTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.ConfirmInformation" >
+    update confirm_information
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      `table_ confirm111` = #{tableConfirm111,jdbcType=VARCHAR},
+      `table_ confirm111xu1` = #{tableConfirm111xu1,jdbcType=VARCHAR},
+      `table_ confirm111xu2` = #{tableConfirm111xu2,jdbcType=VARCHAR},
+      `table_ confirm112` = #{tableConfirm112,jdbcType=VARCHAR},
+      `table_ confirm121` = #{tableConfirm121,jdbcType=VARCHAR},
+      `table_ confirm211` = #{tableConfirm211,jdbcType=VARCHAR},
+      `table_ confirm212` = #{tableConfirm212,jdbcType=VARCHAR},
+      `table_ confirm213` = #{tableConfirm213,jdbcType=VARCHAR},
+      `table_ confirm214` = #{tableConfirm214,jdbcType=VARCHAR},
+      `table_ confirm215` = #{tableConfirm215,jdbcType=VARCHAR},
+      `table_ confirm221` = #{tableConfirm221,jdbcType=VARCHAR},
+      `table_ confirm222` = #{tableConfirm222,jdbcType=VARCHAR},
+      `table_ confirm223` = #{tableConfirm223,jdbcType=VARCHAR},
+      `table_ confirm224` = #{tableConfirm224,jdbcType=VARCHAR},
+      `table_ confirm225` = #{tableConfirm225,jdbcType=VARCHAR},
+      `table_ confirm226` = #{tableConfirm226,jdbcType=VARCHAR},
+      `table_ confirm227` = #{tableConfirm227,jdbcType=VARCHAR},
+      `total_ confirm` = #{totalConfirm,jdbcType=VARCHAR},
+      table_time111 = #{tableTime111,jdbcType=VARCHAR},
+      table_time111xu1 = #{tableTime111xu1,jdbcType=VARCHAR},
+      table_time111xu2 = #{tableTime111xu2,jdbcType=VARCHAR},
+      table_time112 = #{tableTime112,jdbcType=VARCHAR},
+      table_time121 = #{tableTime121,jdbcType=VARCHAR},
+      table_time211 = #{tableTime211,jdbcType=VARCHAR},
+      table_time212 = #{tableTime212,jdbcType=VARCHAR},
+      table_time213 = #{tableTime213,jdbcType=VARCHAR},
+      table_time214 = #{tableTime214,jdbcType=VARCHAR},
+      table_time215 = #{tableTime215,jdbcType=VARCHAR},
+      table_time221 = #{tableTime221,jdbcType=VARCHAR},
+      table_time222 = #{tableTime222,jdbcType=VARCHAR},
+      table_time223 = #{tableTime223,jdbcType=VARCHAR},
+      table_time224 = #{tableTime224,jdbcType=VARCHAR},
+      table_time225 = #{tableTime225,jdbcType=VARCHAR},
+      table_time226 = #{tableTime226,jdbcType=VARCHAR},
+      table_time227 = #{tableTime227,jdbcType=VARCHAR},
+      total_time = #{totalTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccnu.mapper.ParticipationInternationalAcademicConferences225Mapper" >
+  <resultMap id="BaseResultMap" type="com.ccnu.pojo.ParticipationInternationalAcademicConferences225" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="academic_conference_name" property="academicConferenceName" jdbcType="VARCHAR" />
+    <result column="organizer" property="organizer" jdbcType="VARCHAR" />
+    <result column="conference_held_country_or_region" property="conferenceHeldCountryOrRegion" jdbcType="VARCHAR" />
+    <result column="conference_city" property="conferenceCity" jdbcType="VARCHAR" />
+    <result column="opening_date_of_meeting" property="openingDateOfMeeting" jdbcType="VARCHAR" />
+    <result column="whether_chairman_of_conference" property="whetherChairmanOfConference" jdbcType="VARCHAR" />
+    <result column="report_type" property="reportType" jdbcType="VARCHAR" />
+    <result column="report_name" property="reportName" jdbcType="VARCHAR" />
+    <result column="report_date" property="reportDate" jdbcType="VARCHAR" />
+    <result column="reporter" property="reporter" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.ccnu.pojo.vo.ParticipationInternationalAcademicConferences225Vo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tutor_identification_code" property="tutorIdentificationCode" jdbcType="VARCHAR" />
+    <result column="academic_conference_name" property="academicConferenceName" jdbcType="VARCHAR" />
+    <result column="organizer" property="organizer" jdbcType="VARCHAR" />
+    <result column="conference_held_country_or_region" property="conferenceHeldCountryOrRegion" jdbcType="VARCHAR" />
+    <result column="conference_city" property="conferenceCity" jdbcType="VARCHAR" />
+    <result column="opening_date_of_meeting" property="openingDateOfMeeting" jdbcType="VARCHAR" />
+    <result column="whether_chairman_of_conference" property="whetherChairmanOfConference" jdbcType="VARCHAR" />
+    <result column="report_type" property="reportType" jdbcType="VARCHAR" />
+    <result column="report_name" property="reportName" jdbcType="VARCHAR" />
+    <result column="report_date" property="reportDate" jdbcType="VARCHAR" />
+    <result column="reporter" property="reporter" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tutor_identification_code, academic_conference_name, organizer, conference_held_country_or_region, 
+    conference_city, opening_date_of_meeting, whether_chairman_of_conference, report_type, 
+    report_name, report_date, reporter, last_time, is_delete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ccnu.pojo.ParticipationInternationalAcademicConferences225Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from participation_international_academic_conferences_2_2_5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from participation_international_academic_conferences_2_2_5
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from participation_international_academic_conferences_2_2_5
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ccnu.pojo.ParticipationInternationalAcademicConferences225Example" >
+    delete from participation_international_academic_conferences_2_2_5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ccnu.pojo.ParticipationInternationalAcademicConferences225" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into participation_international_academic_conferences_2_2_5 (tutor_identification_code, academic_conference_name, 
+      organizer, conference_held_country_or_region, 
+      conference_city, opening_date_of_meeting, whether_chairman_of_conference, 
+      report_type, report_name, report_date, 
+      reporter, last_time, is_delete
+      )
+    values (#{tutorIdentificationCode,jdbcType=VARCHAR}, #{academicConferenceName,jdbcType=VARCHAR}, 
+      #{organizer,jdbcType=VARCHAR}, #{conferenceHeldCountryOrRegion,jdbcType=VARCHAR}, 
+      #{conferenceCity,jdbcType=VARCHAR}, #{openingDateOfMeeting,jdbcType=VARCHAR}, #{whetherChairmanOfConference,jdbcType=VARCHAR}, 
+      #{reportType,jdbcType=VARCHAR}, #{reportName,jdbcType=VARCHAR}, #{reportDate,jdbcType=VARCHAR}, 
+      #{reporter,jdbcType=VARCHAR}, #{lastTime,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccnu.pojo.ParticipationInternationalAcademicConferences225" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into participation_international_academic_conferences_2_2_5
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code,
+      </if>
+      <if test="academicConferenceName != null" >
+        academic_conference_name,
+      </if>
+      <if test="organizer != null" >
+        organizer,
+      </if>
+      <if test="conferenceHeldCountryOrRegion != null" >
+        conference_held_country_or_region,
+      </if>
+      <if test="conferenceCity != null" >
+        conference_city,
+      </if>
+      <if test="openingDateOfMeeting != null" >
+        opening_date_of_meeting,
+      </if>
+      <if test="whetherChairmanOfConference != null" >
+        whether_chairman_of_conference,
+      </if>
+      <if test="reportType != null" >
+        report_type,
+      </if>
+      <if test="reportName != null" >
+        report_name,
+      </if>
+      <if test="reportDate != null" >
+        report_date,
+      </if>
+      <if test="reporter != null" >
+        reporter,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutorIdentificationCode != null" >
+        #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="academicConferenceName != null" >
+        #{academicConferenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizer != null" >
+        #{organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="conferenceHeldCountryOrRegion != null" >
+        #{conferenceHeldCountryOrRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="conferenceCity != null" >
+        #{conferenceCity,jdbcType=VARCHAR},
+      </if>
+      <if test="openingDateOfMeeting != null" >
+        #{openingDateOfMeeting,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherChairmanOfConference != null" >
+        #{whetherChairmanOfConference,jdbcType=VARCHAR},
+      </if>
+      <if test="reportType != null" >
+        #{reportType,jdbcType=VARCHAR},
+      </if>
+      <if test="reportName != null" >
+        #{reportName,jdbcType=VARCHAR},
+      </if>
+      <if test="reportDate != null" >
+        #{reportDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reporter != null" >
+        #{reporter,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ccnu.pojo.ParticipationInternationalAcademicConferences225Example" resultType="java.lang.Integer" >
+    select count(*) from participation_international_academic_conferences_2_2_5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update participation_international_academic_conferences_2_2_5
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutorIdentificationCode != null" >
+        tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.academicConferenceName != null" >
+        academic_conference_name = #{record.academicConferenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organizer != null" >
+        organizer = #{record.organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conferenceHeldCountryOrRegion != null" >
+        conference_held_country_or_region = #{record.conferenceHeldCountryOrRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conferenceCity != null" >
+        conference_city = #{record.conferenceCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openingDateOfMeeting != null" >
+        opening_date_of_meeting = #{record.openingDateOfMeeting,jdbcType=VARCHAR},
+      </if>
+      <if test="record.whetherChairmanOfConference != null" >
+        whether_chairman_of_conference = #{record.whetherChairmanOfConference,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportType != null" >
+        report_type = #{record.reportType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportName != null" >
+        report_name = #{record.reportName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportDate != null" >
+        report_date = #{record.reportDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reporter != null" >
+        reporter = #{record.reporter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastTime != null" >
+        last_time = #{record.lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update participation_international_academic_conferences_2_2_5
+    set id = #{record.id,jdbcType=INTEGER},
+      tutor_identification_code = #{record.tutorIdentificationCode,jdbcType=VARCHAR},
+      academic_conference_name = #{record.academicConferenceName,jdbcType=VARCHAR},
+      organizer = #{record.organizer,jdbcType=VARCHAR},
+      conference_held_country_or_region = #{record.conferenceHeldCountryOrRegion,jdbcType=VARCHAR},
+      conference_city = #{record.conferenceCity,jdbcType=VARCHAR},
+      opening_date_of_meeting = #{record.openingDateOfMeeting,jdbcType=VARCHAR},
+      whether_chairman_of_conference = #{record.whetherChairmanOfConference,jdbcType=VARCHAR},
+      report_type = #{record.reportType,jdbcType=VARCHAR},
+      report_name = #{record.reportName,jdbcType=VARCHAR},
+      report_date = #{record.reportDate,jdbcType=VARCHAR},
+      reporter = #{record.reporter,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=VARCHAR},
+      is_delete = #{record.isDelete,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccnu.pojo.ParticipationInternationalAcademicConferences225" >
+    update participation_international_academic_conferences_2_2_5
+    <set >
+      <if test="tutorIdentificationCode != null" >
+        tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="academicConferenceName != null" >
+        academic_conference_name = #{academicConferenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizer != null" >
+        organizer = #{organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="conferenceHeldCountryOrRegion != null" >
+        conference_held_country_or_region = #{conferenceHeldCountryOrRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="conferenceCity != null" >
+        conference_city = #{conferenceCity,jdbcType=VARCHAR},
+      </if>
+      <if test="openingDateOfMeeting != null" >
+        opening_date_of_meeting = #{openingDateOfMeeting,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherChairmanOfConference != null" >
+        whether_chairman_of_conference = #{whetherChairmanOfConference,jdbcType=VARCHAR},
+      </if>
+      <if test="reportType != null" >
+        report_type = #{reportType,jdbcType=VARCHAR},
+      </if>
+      <if test="reportName != null" >
+        report_name = #{reportName,jdbcType=VARCHAR},
+      </if>
+      <if test="reportDate != null" >
+        report_date = #{reportDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reporter != null" >
+        reporter = #{reporter,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccnu.pojo.ParticipationInternationalAcademicConferences225" >
+    update participation_international_academic_conferences_2_2_5
+    set tutor_identification_code = #{tutorIdentificationCode,jdbcType=VARCHAR},
+      academic_conference_name = #{academicConferenceName,jdbcType=VARCHAR},
+      organizer = #{organizer,jdbcType=VARCHAR},
+      conference_held_country_or_region = #{conferenceHeldCountryOrRegion,jdbcType=VARCHAR},
+      conference_city = #{conferenceCity,jdbcType=VARCHAR},
+      opening_date_of_meeting = #{openingDateOfMeeting,jdbcType=VARCHAR},
+      whether_chairman_of_conference = #{whetherChairmanOfConference,jdbcType=VARCHAR},
+      report_type = #{reportType,jdbcType=VARCHAR},
+      report_name = #{reportName,jdbcType=VARCHAR},
+      report_date = #{reportDate,jdbcType=VARCHAR},
+      reporter = #{reporter,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAllDoctorConferenceInfoBy225" resultMap="com.ccnu.mapper.ParticipationInternationalAcademicConferences225Mapper.ResultMap"
+  parameterType="com.ccnu.pojo.dto.DoctorInfosQueryDto">
+  select distinct a.id, a.tutor_identification_code, a.academic_conference_name, a.organizer, a.conference_held_country_or_region,
+    a.conference_city, a.opening_date_of_meeting, a.whether_chairman_of_conference, a.report_type,
+    a.report_name, a.report_date, a.reporter, a.last_time, a.is_delete,
+    b.realname as name from participation_international_academic_conferences_2_2_5 as a
+    left JOIN user_account as b on a.tutor_identification_code = b.username
+    where a.is_delete = '0'
+    <if test="college != null and college.trim().length() > 0">
+            AND a.tutor_identification_code in (select username from user_account where faculty_code = #{college})
+    </if>
+    <if test="tutorIdentificationCode != null and tutorIdentificationCode.trim().length() > 0">
+            AND a.tutor_identification_code LIKE CONCAT(CONCAT('%',#{tutorIdentificationCode},'%'))
+    </if>
+</select>
+</mapper>
